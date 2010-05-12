@@ -1,0 +1,88 @@
+
+	<%= image_tag "http://maps.google.com/maps/api/staticmap?size=640x300&center=#{@tile.lat},#{@tile.lon}&markers=color:blue|#{@tile.lat},#{@tile.lon}&zoom=16&sensor=false" %>
+
+<table>
+	<tr>
+		<th>
+			&nbsp;
+		</th>
+		<th>
+			WOEID
+		</th>
+		<th>
+			lat /	lon
+		</th>
+		<th>
+			csquare
+		</th>
+		<th>
+			geohash
+		</th>
+		
+		<tr>
+			<td>
+				<%= @tile.id %>
+			</td>
+			<td>
+				<%= link_to @tile.woeid, "http://www.flickr.com/places/info/#{@tile.woeid}" %>
+			</td>
+			<td>
+				<%= link_to "#{@tile.lat} #{@tile.lon}", "http://maps.google.com/?q=#{@tile.lat}+#{@tile.lon}" %>
+			</td>
+			<td>
+				<%= @tile.csquare_code %>
+			</td>
+			<td>
+				<%= link_to @tile.geohash, "http://geohash.org/#{@tile.geohash}" %>
+			</td>
+		</tr>
+		
+	</tr>
+</table>
+
+<h2>Go</h2>
+<%= link_to 'Index', tiles_path %>
+<%= link_to 'WOEID', tiles_path(:woeid => @tile.woeid) %>
+
+<table>
+	<tr>
+		<td>
+			<%= link_to 'NW', @tile.nw unless @tile.nw.nil? %>
+		</td>
+		<td>
+			<%= link_to 'N', @tile.n unless @tile.n.nil? %>
+		</td>
+		<td>
+			<%= link_to 'NE', @tile.ne unless @tile.ne.nil? %>
+		</td>		
+	</tr>
+	
+	<tr>
+		<td>
+			<%= link_to 'W', @tile.w unless @tile.w.nil? %>
+		</td>
+		<td>
+			*
+		</td>
+		<td>
+			<%= link_to 'E', @tile.e unless @tile.e.nil? %>
+		</td>
+	</tr>
+	
+	<tr>
+			<td>
+				<%= link_to 'SW', @tile.sw unless @tile.sw.nil? %>
+			</td>
+			<td>
+				<%= link_to 'S', @tile.s unless @tile.s.nil? %>
+			</td>
+			<td>
+				<td>
+					<%= link_to 'SE', @tile.se unless @tile.se.nil? %>
+				</td>
+			</td>
+	</tr>
+	
+	
+</table>
+
