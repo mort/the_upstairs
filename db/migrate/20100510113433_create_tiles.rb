@@ -5,7 +5,8 @@ class CreateTiles < ActiveRecord::Migration
       t.float :lon
       t.string :csquare_code
       t.string :geohash
-      t.integer :woe_id
+      t.integer :woeid
+      t.float :precision
       t.datetime :explored_at
       t.timestamps
     end

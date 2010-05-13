@@ -1,17 +1,17 @@
 class Tile < ActiveRecord::Base
   
-  #validates_uniqueness_of :geohash, :csquare_code, :lat, :lon
+  validates_uniqueness_of :geohash, :csquare_code, :lat, :lon
     
-  def self.make(lat_sw = 0.0, lon_sw = 0.0, lat_ne = 90.0, lon_ne = 180.0, woe_id = nil, step = 0.01)
+  def self.make(lat_sw = 0.0, lon_sw = 0.0, lat_ne = 90.0, lon_ne = 180.0, woeid = nil, step = 0.01)
     
     lat = lat_sw
     lon = lon_sw
         
-      while lat < lat_ne
+      while lat <= lat_ne
   
         lat = ('%0.2f' % lat).to_f
       	      	
-      	while lon < lon_ne
+      	while lon <= lon_ne
       	  
       	  lon = ('%0.2f' % lon).to_f
                 	  
@@ -19,7 +19,8 @@ class Tile < ActiveRecord::Base
       	  geohash = GeoHash.encode(lat,lon)
           
       		begin
-      		  tile = self.create(:lat => lat, :lon => lon, :csquare_code => csquare.code, :geohash => geohash, :woe_id => woe_id)
+      		  tile = self.new(:lat => lat, :lon => lon, :csquare_code => csquare.code, :geohash => geohash, :woeid => woeid, :precision => step)
+    	      tile.save(false)
     	    rescue ActiveRecord::StatementInvalid
 
   	      end

@@ -9,14 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100510113433) do
+ActiveRecord::Schema.define(:version => 20100511084256) do
 
   create_table "tiles", :force => true do |t|
     t.float    "lat"
     t.float    "lon"
     t.string   "csquare_code"
     t.string   "geohash"
-    t.integer  "woe_id"
+    t.integer  "woeid"
+    t.float    "precision"
     t.datetime "explored_at"
     t.datetime "created_at"
     t.datetime "updated_at"
