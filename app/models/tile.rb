@@ -1,5 +1,7 @@
 class Tile < ActiveRecord::Base
   
+  has_many :scenes
+  
   #validates_uniqueness_of :geohash, :csquare_code, :lat, :lon
   
   require File.join(Rails.root,'vendor','gems','gigante','lib','gigante.rb')
@@ -87,7 +89,8 @@ class Tile < ActiveRecord::Base
 
   def self.safari(woeid)
     Tile.all(:conditions => ['woeid = ?',woeid]).each do |tile|
-      tile.snapshot
+      s = tile.snapshot
+      tile.store_scene(s)
       sleep(2)
     end
   end
@@ -101,12 +104,13 @@ class Tile < ActiveRecord::Base
     gigante = Gigante::Search.new(settings)
     snapshot = gigante.query(self.lat,self.lon,1,services)
     logger.info(snapshot.inspect)
+    snapshot
+    
   end
     
-    
-    
-
+  def store_scene(snapshot)
+    self.scenes.create(:content => snapshot)
+  end
   
-
 
 end

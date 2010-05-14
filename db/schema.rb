@@ -9,14 +9,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100510113433) do
+ActiveRecord::Schema.define(:version => 20100514110154) do
+
+  create_table "scenes", :force => true do |t|
+    t.integer  "tile_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tiles", :force => true do |t|
-    t.float    "lat"
-    t.float    "lon"
+    t.decimal  "lat",          :precision => 6, :scale => 2
+    t.decimal  "lon",          :precision => 6, :scale => 2
     t.string   "csquare_code"
     t.string   "geohash"
-    t.integer  "woe_id"
+    t.integer  "woeid"
+    t.float    "precision"
     t.datetime "explored_at"
     t.datetime "created_at"
     t.datetime "updated_at"

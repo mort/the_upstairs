@@ -24972,3 +24972,27 @@ Rendering tiles/show
   [4;36;1mTile Load (11.3ms)[0m   [0;1mSELECT * FROM `tiles` WHERE (lat < 43.36 AND lon > -5.84) ORDER BY lat DESC, lon ASC LIMIT 1[0m
   [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `tiles` WHERE (lat < 43.36 AND lon > -5.84) ORDER BY lat DESC, lon ASC LIMIT 1[0m
 Completed in 69ms (View: 17, DB: 47) | 200 OK [http://durden.dev/tiles/2476]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TilesController#index (for 127.0.0.1 at 2010-05-14 12:24:14) [GET]
+  [4;35;1mTile Load (169.2ms)[0m   [0mSELECT * FROM `tiles` ORDER BY lat DESC, lon ASC[0m
+Rendering tiles/index
+  [4;36;1mTile Columns (1.5ms)[0m   [0;1mSHOW FIELDS FROM `tiles`[0m
+Completed in 6636ms (View: 5915, DB: 171) | 200 OK [http://durden.dev/tiles]
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (27.7ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateTiles (20100510113433)
+Migrating to CreateScenes (20100514110154)
+  [4;35;1mSQL (221.5ms)[0m   [0mCREATE TABLE `scenes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `tile_id` int(11), `content` text, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100514110154')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (71.1ms)[0m   [0;1mSHOW FIELDS FROM `scenes`[0m
+  [4;35;1mSQL (45.4ms)[0m   [0mdescribe `scenes`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW KEYS FROM `scenes`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `tiles`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mdescribe `tiles`[0m
+  [4;35;1mSQL (46.3ms)[0m   [0mSHOW KEYS FROM `tiles`[0m
