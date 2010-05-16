@@ -7,13 +7,23 @@
 			WOEID
 		</th>
 		<th>
-			lat /	lon
+			lat/lon
+		</th>
+		<th>
+			bbox
 		</th>
 		<th>
 			csquare
 		</th>
 		<th>
 			geohash
+		</th>
+		<th>
+			Flickr results
+		</th>
+		
+		<th>
+			Oos results
 		</th>
 		<th>
 			&nbsp;
@@ -32,14 +42,28 @@
 				<%= link_to "#{tile.lat} #{tile.lon}", "http://maps.google.com/?q=#{tile.lat}+#{tile.lon}" %>
 			</td>
 			<td>
+				[<%= tile.bbox.join(',') %>]
+			</td>
+			<td>
 				<%= tile.csquare_code %>
 			</td>
 			<td>
 				<%= link_to tile.geohash, "http://geohash.org/#{tile.geohash}" %>
 			</td>
+		
 			<td>
-				<%= link_to 'Show', tile_path(tile) %>
+				<%= tile.flickr_results? ? '*' : '-' %>
 			</td>
+			
+					<td>
+						<%= tile.oos_results? ? '*' : '-' %>
+					</td>
+			
+				<td>
+					<%= link_to 'Show', tile_path(tile) %>
+				</td>
+			
+			
 		</tr>
 	<%- end -%>
 </table>

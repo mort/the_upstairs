@@ -1,8 +1,14 @@
 class Tile < ActiveRecord::Base
   
   has_many :scenes
+  has_many :features
+  has_many :positions
   
-  #validates_uniqueness_of :geohash, :csquare_code, :lat, :lon
+  before_create :adjust_coordinate_precision
+  before_validation_on_create :set_codes
+
+  validates_presence_of :geohash, :csquare_code, :lat, :lon, :resolution 
+  validates_uniqueness_of :geohash, :csquare_code, :lat, :lon
   
   require File.join(Rails.root,'vendor','gems','gigante','lib','gigante.rb')
     
@@ -23,7 +29,7 @@ class Tile < ActiveRecord::Base
       	  geohash = GeoHash.encode(lat,lon)
           
       		begin
-      		  tile = self.create(:lat => lat, :lon => lon, :csquare_code => csquare.code, :geohash => geohash, :woe_id => woe_id)
+      		  tile = self.create(:lat => lat, :lon => lon, :csquare_code => csquare.code, :geohash => geohash, :woe_id => woe_id, :resolution => step)
     	    rescue ActiveRecord::StatementInvalid
 
   	      end
@@ -87,30 +93,92 @@ class Tile < ActiveRecord::Base
     Tile.find(:first, :conditions => "lat < #{self.lat} AND lon > #{self.lon}", :order => 'lat DESC, lon ASC')
   end
 
-  def self.safari(woeid)
+  def self.safari(woeid, services = ['oos','flickr'])
     Tile.all(:conditions => ['woeid = ?',woeid]).each do |tile|
-      s = tile.snapshot
-      tile.store_scene(s)
+      s = tile.snapshot(services)
+      tile.store_scene(s) if s[:meta][:total_results].to_i > 0
       sleep(2)
     end
   end
 
-  def snapshot
+  def snapshot(services)
     settings = { :flickr => {:auth =>  {:api_key => '842ff12e5390937328913c5a8ee05fb8'} },
                  :yelp => {:auth => {:api_key => 'ZPJ11diDtP2Bob2AhVvhtQ'} },
                  :oos => {:auth =>  {:app_key => '7a5e65802381edf4ca98afd71eb20bd2', :app_secret => '8b7e77652569239b22a2a42c891757cf' } }  
                }
-    services = %w(flickr)           
     gigante = Gigante::Search.new(settings)
-    snapshot = gigante.query(self.lat,self.lon,1,services)
-    logger.info(snapshot.inspect)
+
+    o = {}
+    o[:flickr] = {:query => {:min_taken_date => '2009-12-31', :bbox => bbox.join(',') } } if services.include?('flickr')
+    o[:oos] = {:query => {:bbox => bbox.join(',') } } if services.include?('oos')
+
+    snapshot = gigante.query(self.lat,self.lon,1,services,o)
     snapshot
-    
-  end
-    
-  def store_scene(snapshot)
-    self.scenes.create(:content => snapshot)
   end
   
+  def bbox
+    [self.lon,self.lat,self.lon+self.resolution,self.lat+resolution]
+  end
+  
+  def fourcorners
+    [[self.lon,self.lat],[self.lon+self.resolution,self.lat],[self.lon+resolution,self.lat+resolution],[self.lon,self.lat+resolution]]
+  end
+  
+  def polygon
+    fourcorners << fourcorners[0]
+  end
+  
+  
+  def tidy_and_store_scene(snapshot)
+    store_scene(tidy_snapshot(snapshot))
+  end
+    
+  def store_scene(s)
+    begin
+      self.scenes.create(:content => s)
+    rescue ActiveRecord::StatementInvalid
+    end
+    
+  end
+  
+  def tidy_snapshot(snapshot)
+    snapshot
+  end
+  
+  def scene
+    scenes.first
+  end
+  
+  def flickr_results
+    return nil if scene.nil?
+    return nil unless scene.content[:results][:flickr][:search][:total_results].to_i > 0
+    return scene.content[:results][:flickr][:search][:results]
+  end
+
+  def oos_results
+    return nil if scene.nil?
+    return nil unless scene.content[:results][:oos][:search][:total_results].to_i > 0
+    return scene.content[:results][:oos][:search][:results]
+  end
+
+  def flickr_results?
+    !flickr_results.nil?
+  end
+
+  def oos_results?
+     !oos_results.nil?
+   end
+
+  private
+  
+  def adjust_coordinate_precision
+    self.lat = ('%0.2f' % self.lat).to_f
+    self.lon = ('%0.2f' % self.lon).to_f
+  end
+  
+  def set_codes
+    self.csquare_code = CSquare.new(self.lat,self.lon).code
+    self.geohash = GeoHash.encode(self.lat,self.lon)
+  end
 
 end

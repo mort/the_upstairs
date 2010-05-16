@@ -9,25 +9,56 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100514110154) do
+ActiveRecord::Schema.define(:version => 20100516214233) do
 
-  create_table "scenes", :force => true do |t|
+  create_table "features", :force => true do |t|
     t.integer  "tile_id"
-    t.text     "content"
+    t.string   "service"
+    t.string   "type"
+    t.string   "title"
+    t.float    "lat"
+    t.float    "lon"
+    t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  create_table "pings", :force => true do |t|
+    t.integer  "user_id"
+    t.float    "lat"
+    t.float    "lon"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "positions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "tile_id"
+    t.integer  "ping_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "scenes", :force => true do |t|
+    t.integer  "tile_id"
+    t.text     "content"
+    t.string   "checksum"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "scenes", ["checksum"], :name => "index_scenes_on_checksum", :unique => true
+
   create_table "tiles", :force => true do |t|
-    t.decimal  "lat",          :precision => 6, :scale => 2
-    t.decimal  "lon",          :precision => 6, :scale => 2
+    t.float    "lat"
+    t.float    "lon"
     t.string   "csquare_code"
     t.string   "geohash"
     t.integer  "woeid"
-    t.float    "precision"
     t.datetime "explored_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "resolution",   :default => 0.01
   end
 
   add_index "tiles", ["lat", "lon", "geohash", "csquare_code"], :name => "index_tiles_on_lat_and_lon_and_geohash_and_csquare_code", :unique => true

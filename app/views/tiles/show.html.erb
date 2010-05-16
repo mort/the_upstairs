@@ -1,6 +1,39 @@
+<%- content_for :gmap_js do -%>
+function initialize() {
+  if (GBrowserIsCompatible()) {
+    var map = new GMap2(document.getElementById("map_canvas"));
 
-	<%= image_tag "http://maps.google.com/maps/api/staticmap?size=640x300&center=#{@tile.lat},#{@tile.lon}&markers=color:blue|#{@tile.lat},#{@tile.lon}&zoom=16&sensor=false" %>
+    map.setCenter(new GLatLng(<%= @tile.lat %>, <%= @tile.lon %>), 13);
+    map.setUIToDefault();
+		var point = true;
+		
+		var polygon = new GPolygon([
+			<%- @tile.polygon.each do |corner| -%>
+			  	new GLatLng(<%= corner[1] %>, <%= corner[0] %>),
+			<%- end -%>
+		  ], "#f33f00", 5, 1, "#ff0000", 0.2);
+		  map.addOverlay(polygon);
+		
+		<%- unless @tile.flickr_results.blank? -%>
+			<%- @tile.flickr_results.each do |f|  -%>
+				point = new GLatLng(<%= f[:lat] %>,<%= f[:lon] %>);
+				map.addOverlay(new GMarker(point));
+			<%- end -%>
+			
+	    
+		<%- end -%>
+		
+		<%- unless @tile.oos_results.blank? -%>
+			<%- @tile.oos_results.each do |f|  -%>
+				point = new GLatLng(<%= f[:lat] %>,<%= f[:lon] %>);
+				map.addOverlay(new GMarker(point));
+			<%- end -%>
+		<%- end -%>
+		
+	}
+}
 
+<%- end -%>
 <table>
 	<tr>
 		<th>
@@ -39,12 +72,11 @@
 		
 	</tr>
 </table>
+	
+	<div id="map_canvas" style="width: 500px; height: 300px"></div>
 
-<h2>Go</h2>
-<%= link_to 'Index', tiles_path %>
-<%= link_to 'WOEID', tiles_path(:woeid => @tile.woeid) %>
 
-<table>
+<table id="compass">
 	<tr>
 		<td>
 			<%= link_to 'NW', @tile.nw unless @tile.nw.nil? %>
@@ -77,9 +109,7 @@
 				<%= link_to 'S', @tile.s unless @tile.s.nil? %>
 			</td>
 			<td>
-				<td>
-					<%= link_to 'SE', @tile.se unless @tile.se.nil? %>
-				</td>
+				<%= link_to 'SE', @tile.se unless @tile.se.nil? %>
 			</td>
 	</tr>
 	

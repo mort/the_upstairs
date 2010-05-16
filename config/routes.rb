@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :pings
+
+  map.resources :positions
+
+  map.resources :features
+
   map.resources :scenes
 
   map.resources :tiles

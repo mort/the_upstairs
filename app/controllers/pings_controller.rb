@@ -1,0 +1,2 @@
+class PingsController < ApplicationController
+end
