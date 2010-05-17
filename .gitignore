@@ -1,0 +1,11 @@
+log/*.log
+config/database.yml
+config/doorman.yml
+.DS_Store
+db/*.sqlite3
+public/system
+public/system/*
+public/system/**/*
+public/temp_snapshots/*
+tmp
+TAGS
