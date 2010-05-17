@@ -56,9 +56,9 @@ ActiveRecord::Schema.define(:version => 20100516214233) do
     t.string   "geohash"
     t.integer  "woeid"
     t.datetime "explored_at"
+    t.float    "resolution"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.float    "resolution",   :default => 0.01
   end
 
   add_index "tiles", ["lat", "lon", "geohash", "csquare_code"], :name => "index_tiles_on_lat_and_lon_and_geohash_and_csquare_code", :unique => true
