@@ -12,7 +12,7 @@ class Tile < ActiveRecord::Base
   
   require File.join(Rails.root,'vendor','gems','gigante','lib','gigante.rb')
     
-  def self.make(lat_sw = 0.0, lon_sw = 0.0, lat_ne = 90.0, lon_ne = 180.0, woe_id = nil, step = 0.01)
+  def self.make(lat_sw = 0.0, lon_sw = 0.0, lat_ne = 90.0, lon_ne = 180.0, woeid = nil, step = 0.01)
     
     lat = lat_sw
     lon = lon_sw
@@ -29,7 +29,7 @@ class Tile < ActiveRecord::Base
       	  geohash = GeoHash.encode(lat,lon)
           
       		begin
-      		  tile = self.create(:lat => lat, :lon => lon, :csquare_code => csquare.code, :geohash => geohash, :woe_id => woe_id, :resolution => step)
+      		  tile = self.create(:lat => lat, :lon => lon, :csquare_code => csquare.code, :geohash => geohash, :woeid => woeid, :resolution => step)
     	    rescue ActiveRecord::StatementInvalid
 
   	      end
@@ -136,9 +136,13 @@ class Tile < ActiveRecord::Base
   def store_scene(s)
     begin
       self.scenes.create(:content => s)
+      self.mark_as_explored!
     rescue ActiveRecord::StatementInvalid
     end
-    
+  end
+
+  def mark_as_explored!
+    update_attribute(:explored_at, Time.now)
   end
   
   def tidy_snapshot(snapshot)
