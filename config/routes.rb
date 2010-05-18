@@ -1,6 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :pings
-
+  
   map.resources :positions
 
   map.resources :features
@@ -8,6 +7,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :scenes
 
   map.resources :tiles
+  
+  map.resources :users do |user|
+    user.resources :pings
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
 

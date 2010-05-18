@@ -1,12 +1,15 @@
 class Tile < ActiveRecord::Base
   
+  RESOLUTION = 0.01
+  
   has_many :scenes
   has_many :features
   has_many :positions
-  
+  has_many :users, :through => :positions
   
   before_create :adjust_coordinate_precision
   before_validation_on_create :set_codes
+  before_validation_on_create :set_resolution
 
   validates_presence_of :geohash, :csquare_code, :lat, :lon, :resolution 
   validates_uniqueness_of :geohash, :csquare_code, :lat, :lon
@@ -200,5 +203,9 @@ class Tile < ActiveRecord::Base
     self.csquare_code = CSquare.new(self.lat,self.lon).code
     self.geohash = GeoHash.encode(self.lat,self.lon)
   end
-
+  
+  def set_resolution
+    self.resolution = Tile::RESOLUTION
+  end
+  
 end
