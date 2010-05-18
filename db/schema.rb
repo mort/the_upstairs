@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100516214233) do
+ActiveRecord::Schema.define(:version => 20100517220655) do
 
   create_table "features", :force => true do |t|
     t.integer  "tile_id"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20100516214233) do
     t.float    "resolution"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "reverse_geocoding_data"
   end
 
   add_index "tiles", ["lat", "lon", "geohash", "csquare_code"], :name => "index_tiles_on_lat_and_lon_and_geohash_and_csquare_code", :unique => true

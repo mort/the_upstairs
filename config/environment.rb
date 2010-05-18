@@ -23,6 +23,7 @@ Rails::Initializer.run do |config|
   #config.gem 'geohash'
   config.gem 'csquares'
   config.gem 'davetroy-geohash', :lib => 'geohash'
+  config.gem 'geokit'
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]

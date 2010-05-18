@@ -4,11 +4,16 @@ class Tile < ActiveRecord::Base
   has_many :features
   has_many :positions
   
+  
   before_create :adjust_coordinate_precision
   before_validation_on_create :set_codes
 
   validates_presence_of :geohash, :csquare_code, :lat, :lon, :resolution 
   validates_uniqueness_of :geohash, :csquare_code, :lat, :lon
+  
+  serialize :reverse_geocoding_data
+  
+  alias_attribute :rgd, :reverse_geocoding_data
   
   require File.join(Rails.root,'vendor','gems','gigante','lib','gigante.rb')
     
@@ -172,6 +177,17 @@ class Tile < ActiveRecord::Base
   def oos_results?
      !oos_results.nil?
    end
+   
+  def self.reverse_geocode
+    Tile.all(:conditions => {:reverse_geocoding_data => nil}).each do |t|
+      t.reverse_geocode!
+    end
+  end
+     
+  def reverse_geocode!
+    res = Geokit::Geocoders::GoogleGeocoder::reverse_geocode("#{self.lat},#{self.lon}")
+    update_attribute(:reverse_geocoding_data,res)
+  end
 
   private
   
