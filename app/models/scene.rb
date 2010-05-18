@@ -19,7 +19,10 @@ class Scene < ActiveRecord::Base
       if content[:results].has_key?(service)
         results = content[:results][service][:search][:results]
         results.each do |r|
-          self.tile.features.create(r.merge!(:service => service.to_s))
+          type = (service == :flickr) ? 'picture' : 'venue'
+          f = self.tile.features.build(r.merge!(:service => service.to_s))
+          f.type = type
+          f.save
         end
       end
     end

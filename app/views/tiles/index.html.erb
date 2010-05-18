@@ -19,6 +19,9 @@
 			geohash
 		</th>
 		<th>
+			Full address
+		</th>
+		<th>
 			Flickr results
 		</th>
 		
@@ -49,6 +52,10 @@
 			</td>
 			<td>
 				<%= link_to tile.geohash, "http://geohash.org/#{tile.geohash}" %>
+			</td>
+			
+			<td>
+			 <%= tile.rgd.full_address unless tile.rgd.nil? %>
 			</td>
 		
 			<td>
