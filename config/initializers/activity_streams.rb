@@ -7,9 +7,7 @@
 
 # NOTE: The activites keys must be unique
 ACTIVITY_STREAM_ACTIVITIES = { 
-    :enter_tile => 'Enter a tile',
-    :exit_tile => 'Exits a tile',
-    :move_tiles => 'Moves from one a tile to another'
+    :movement => 'Movement across tiles'
     }
 
 # NOTE: These have hard coded meanings
