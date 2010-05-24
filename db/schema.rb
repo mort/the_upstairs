@@ -9,7 +9,51 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100518182834) do
+ActiveRecord::Schema.define(:version => 20100523204704) do
+
+  create_table "activity_stream_preferences", :force => true do |t|
+    t.string   "activity"
+    t.string   "location"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activity_stream_preferences", ["activity", "user_id"], :name => "activity_stream_preferences_idx"
+
+  create_table "activity_stream_totals", :force => true do |t|
+    t.string   "activity"
+    t.integer  "object_id"
+    t.string   "object_type"
+    t.float    "total",       :default => 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activity_stream_totals", ["activity", "object_id", "object_type"], :name => "activity_stream_totals_idx"
+
+  create_table "activity_streams", :force => true do |t|
+    t.string   "verb"
+    t.string   "activity"
+    t.integer  "actor_id"
+    t.string   "actor_type"
+    t.string   "actor_name_method"
+    t.integer  "count",                       :default => 1
+    t.integer  "object_id"
+    t.string   "object_type"
+    t.string   "object_name_method"
+    t.integer  "indirect_object_id"
+    t.string   "indirect_object_type"
+    t.string   "indirect_object_name_method"
+    t.string   "indirect_object_phrase"
+    t.integer  "status",                      :default => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activity_streams", ["actor_id", "actor_type"], :name => "activity_streams_by_actor"
+  add_index "activity_streams", ["indirect_object_id", "indirect_object_type"], :name => "activity_streams_by_indirect_object"
+  add_index "activity_streams", ["object_id", "object_type"], :name => "activity_streams_by_object"
 
   create_table "features", :force => true do |t|
     t.integer  "tile_id"
@@ -23,6 +67,14 @@ ActiveRecord::Schema.define(:version => 20100518182834) do
     t.datetime "updated_at"
   end
 
+  create_table "journeys", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "token"
+    t.integer  "status",     :limit => 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "pings", :force => true do |t|
     t.integer  "user_id"
     t.float    "lat"
@@ -32,9 +84,17 @@ ActiveRecord::Schema.define(:version => 20100518182834) do
   end
 
   create_table "positions", :force => true do |t|
-    t.integer  "user_id"
     t.integer  "tile_id"
     t.integer  "ping_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "journey_id"
+  end
+
+  create_table "presences", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "venue_id"
+    t.datetime "finished_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -65,15 +125,15 @@ ActiveRecord::Schema.define(:version => 20100518182834) do
   add_index "tiles", ["lat", "lon", "geohash", "csquare_code"], :name => "index_tiles_on_lat_and_lon_and_geohash_and_csquare_code", :unique => true
 
   create_table "users", :force => true do |t|
-    t.string   "login",                              :null => false
-    t.string   "email",                              :null => false
-    t.string   "crypted_password",                   :null => false
-    t.string   "password_salt",                      :null => false
-    t.string   "persistence_token",                  :null => false
-    t.string   "single_access_token",                :null => false
-    t.string   "perishable_token",                   :null => false
-    t.integer  "login_count",         :default => 0, :null => false
-    t.integer  "failed_login_count",  :default => 0, :null => false
+    t.string   "login",                                :null => false
+    t.string   "email",                                :null => false
+    t.string   "crypted_password",                     :null => false
+    t.string   "password_salt",                        :null => false
+    t.string   "persistence_token",                    :null => false
+    t.string   "single_access_token",                  :null => false
+    t.string   "perishable_token",                     :null => false
+    t.integer  "login_count",           :default => 0, :null => false
+    t.integer  "failed_login_count",    :default => 0, :null => false
     t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
@@ -81,6 +141,7 @@ ActiveRecord::Schema.define(:version => 20100518182834) do
     t.string   "last_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "activity_stream_token"
   end
 
 end

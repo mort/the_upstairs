@@ -1,4 +1,5 @@
 class TilesController < ApplicationController
+  before_filter :validate_request
   
   def index
     conditions = {}
@@ -8,5 +9,24 @@ class TilesController < ApplicationController
   
   def show
     @tile = Tile.find(params[:id])
+
+    respond_to do |format|
+      format.json
+    end
+  end
+  
+  
+  def map
+    @tile = Tile.find(params[:id], :include => :features)
+    
+    respond_to do |format|
+      format.json
+    end
+  end
+  
+  private
+  
+  def validate_request
+    render :text => '', :status => 404 unless (current_user.in_journey?(params[:journey_id]) && current_user.in_tile?(params[:id]))
   end
 end

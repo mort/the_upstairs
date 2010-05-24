@@ -1,0 +1,3 @@
+[submodule "vendor/plugins/activity_streams"]
+	path = vendor/plugins/activity_streams
+	url = git://github.com/face/activity_streams.git

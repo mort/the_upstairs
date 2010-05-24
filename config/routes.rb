@@ -1,4 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+ 
+  map.resources :journeys do |journey|
+    journey.resources :tiles, :member => {:map => :get}
+    journey.resources :pictures
+    journey.resources :venues, :member => {:checkin => :post, :checkout => :post}
+  end
   
   map.resources :positions
 

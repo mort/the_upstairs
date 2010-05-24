@@ -3,8 +3,15 @@
 
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
+  helper_method :current_user
+  include LogActivityStreams
+  
   #protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+  
+  def current_user
+    @user ||= User.first
+  end
 end

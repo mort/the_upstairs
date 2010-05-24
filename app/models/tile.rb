@@ -4,6 +4,8 @@ class Tile < ActiveRecord::Base
   
   has_many :scenes
   has_many :features
+  has_many :venues
+  has_many :pictures
   has_many :positions
   has_many :users, :through => :positions
   

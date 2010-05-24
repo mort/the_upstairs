@@ -1,0 +1,38 @@
+<%- 
+	t = {}
+	
+	t[:meta] = {
+		:journey_id => current_user.ongoing_journey.id,
+		:user_id => current_user.id,
+		:elapsed_journey_time => (current_user.ongoing_journey.elapsed_time)
+	}
+	
+	t[:look] = {
+		:lat => @tile.lat,
+		:lon => @tile.lon,
+		:csquare_code => @tile.csquare_code,
+		:geohash => @tile.geohash,
+		:woeid => @tile.woeid
+	}
+
+ -%>
+
+<%- 
+	t[:pictures] = []
+	t[:venues] = []
+	
+	@tile.pictures.each do |p|
+		t[:pictures] << {:id => p.id, :lon => p.lon, :lat => p.lat, :title => p.title, :url => p.url, :geohash => p.geohash, :link => journey_picture_url(current_user.ongoing_journey, p)}
+	end
+	
+	@tile.venues.each do |v|
+		venue = {:id => v.id,:lon => v.lon, :lat => v.lat, :title => v.title, :url => v.url, :geohash => v.geohash}
+		venue[:links] = {}
+		
+		venue[:links][:look] = journey_venue_url(current_user.ongoing_journey, v)
+		venue[:links][:checkin] = checkin_journey_venue_url(current_user.ongoing_journey, v)
+		venue[:links][:checkout] = checkout_journey_venue_url(current_user.ongoing_journey, v)
+		
+		t[:venues] << venue
+	end
+ -%><%= t.to_json %>

@@ -70,7 +70,13 @@
 					<%= link_to 'Show', tile_path(tile) %>
 				</td>
 			
-			
+			<td>
+				<%- form_for Ping.new, :url => user_pings_path(User.first) do |f| -%>
+				<%= hidden_field_tag 'lat', tile.lat %>
+				<%= hidden_field_tag 'lon', tile.lon %>
+				<%= submit_tag 'Crear'  %>
+				<%- end -%>
+			</td>
 		</tr>
 	<%- end -%>
 </table>

@@ -1,0 +1,22 @@
+<%- 
+	t = {}
+	
+	t[:meta] = {
+		:journey_id => current_user.ongoing_journey.id,
+		:user_id => current_user.id,
+		:elapsed_journey_time => (current_user.ongoing_journey.elapsed_time)
+	}
+	
+	t[:look] = {
+		:lat => @tile.lat,
+		:lon => @tile.lon,
+		:csquare_code => @tile.csquare_code,
+		:geohash => @tile.geohash,
+		:woeid => @tile.woeid
+	}
+
+ -%>
+
+<%= t.to_json %>
+
+
