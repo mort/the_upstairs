@@ -15,8 +15,8 @@
 		:woeid => @tile.woeid
 	}
 
- -%>
-
-<%= t.to_json %>
-
-
+	t[:urls] = {
+		:look => journey_tile_url(current_user.ongoing_journey, @tile),
+		:map =>  map_journey_tile_url(current_user.ongoing_journey, @tile)
+	}
+ -%><%= t.to_json %>

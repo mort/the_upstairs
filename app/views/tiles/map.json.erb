@@ -14,6 +14,11 @@
 		:geohash => @tile.geohash,
 		:woeid => @tile.woeid
 	}
+	
+	t[:urls] = {
+		:look => journey_tile_url(current_user.ongoing_journey, @tile),
+		:map =>  map_journey_tile_url(current_user.ongoing_journey, @tile)
+	}
 
  -%>
 
@@ -30,8 +35,7 @@
 		venue[:links] = {}
 		
 		venue[:links][:look] = journey_venue_url(current_user.ongoing_journey, v)
-		venue[:links][:checkin] = checkin_journey_venue_url(current_user.ongoing_journey, v)
-		venue[:links][:checkout] = checkout_journey_venue_url(current_user.ongoing_journey, v)
+		venue[:links][:presence] = journey_venue_presence_url(current_user.ongoing_journey, v)
 		
 		t[:venues] << venue
 	end

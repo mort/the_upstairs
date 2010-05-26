@@ -8,6 +8,6 @@ class PingsController < ApplicationController
     position = ping.position
     journey = user.ongoing_journey
     @tile = position.tile
-    redirect_to(map_journey_tile_url(journey, @tile, :format => :json))
+    redirect_to(journey_tile_url(journey, @tile, :format => :json))
   end
 end
