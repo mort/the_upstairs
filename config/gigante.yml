@@ -1,0 +1,7 @@
+flickr:
+  auth:
+    api_key: '842ff12e5390937328913c5a8ee05fb8'
+oos:
+  auth:
+    app_key: '7a5e65802381edf4ca98afd71eb20bd2'
+    app_secret: '8b7e77652569239b22a2a42c891757cf'

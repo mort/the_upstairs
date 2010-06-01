@@ -1,0 +1,69 @@
+--- !ruby/object:Gem::Specification 
+name: davetroy-geohash
+version: !ruby/object:Gem::Version 
+  prerelease: false
+  segments: 
+  - 1
+  - 1
+  - 0
+  version: 1.1.0
+platform: ruby
+authors: 
+- David Troy
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2008-11-27 00:00:00 +01:00
+default_executable: 
+dependencies: []
+
+description: Geohash provides support for manipulating GeoHash strings in Ruby. See http://geohash.org.
+email: dave@roundhousetech.com
+executables: []
+
+extensions: 
+- ext/extconf.rb
+extra_rdoc_files: 
+- Manifest.txt
+- README
+files: 
+- ext/extconf.rb
+- ext/geohash_native.c
+- lib/geohash.rb
+- Manifest.txt
+- README
+- test/test_geohash.rb
+has_rdoc: true
+homepage: http://github.com/davetroy/geohash
+licenses: []
+
+post_install_message: 
+rdoc_options: 
+- --main
+- README
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      segments: 
+      - 0
+      version: "0"
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      segments: 
+      - 0
+      version: "0"
+requirements: []
+
+rubyforge_project: 
+rubygems_version: 1.3.6
+signing_key: 
+specification_version: 2
+summary: GeoHash Library for Ruby, per http://geohash.org implementation.
+test_files: 
+- test/test_geohash.rb

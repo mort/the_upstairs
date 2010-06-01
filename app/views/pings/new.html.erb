@@ -1,0 +1,5 @@
+<%- form_for Ping.new, :url => user_pings_path(User.first) do |f| -%>
+<%= hidden_field_tag 'lat', '45.34' %>
+<%= hidden_field_tag 'lon', '6.54' %>
+<%= submit_tag 'Crear'  %>
+<%- end -%>	

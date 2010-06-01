@@ -1,0 +1,5 @@
+class VenuesController < FeaturesController
+
+ 
+
+end

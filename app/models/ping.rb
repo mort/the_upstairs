@@ -1,0 +1,15 @@
+class Ping < ActiveRecord::Base
+  belongs_to :user
+  has_one :position
+  
+  after_create :set_position
+  
+  private
+  
+  def set_position
+    csquare = CSquare.new(('%0.2f' % self.lat).to_f,('%0.2f' % self.lon).to_f)
+    tile = Tile.find_by_csquare_code(csquare.code) || Tile.create(:lat => self.lat, :lon => self.lon)
+    self.position = Position.create(:ping_id => self.id, :journey_id => self.user.ongoing_journey.id, :tile_id => tile.id)
+  end
+  
+end
