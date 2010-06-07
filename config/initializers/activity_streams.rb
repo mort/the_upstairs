@@ -7,7 +7,8 @@
 
 # NOTE: The activites keys must be unique
 ACTIVITY_STREAM_ACTIVITIES = { 
-    :movement => 'Movement across tiles'
+    :movement => 'Movement across tiles',
+    :presence => 'Presence on venues'
     }
 
 # NOTE: These have hard coded meanings

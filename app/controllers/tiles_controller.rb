@@ -1,6 +1,6 @@
 class TilesController < ApplicationController
-  before_filter :validate_request, :except => :index
   before_filter :require_user, :only => :index
+  #before_filter :validate_request, :except => :index
   
   def index
     conditions = {}
@@ -22,6 +22,16 @@ class TilesController < ApplicationController
     
     respond_to do |format|
       format.json
+    end
+  end
+  
+  def feed
+    @tile = Tile.find(params[:id])
+    
+    @messages = @tile.public_messages
+    
+    respond_to do |format|
+      format.atom
     end
   end
   

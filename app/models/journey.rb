@@ -1,4 +1,5 @@
 class Journey < ActiveRecord::Base
+
   STATUSES = {:ongoing => 1, :finished => 0}
   
   belongs_to :user

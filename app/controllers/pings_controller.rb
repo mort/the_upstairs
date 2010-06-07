@@ -1,5 +1,5 @@
 class PingsController < ApplicationController
-  log_activity_streams :current_user, :login, :enter_tile, 
+  log_activity_streams :current_user, :login, :enters_tile, 
           :@tile, :geohash, :create, :movement, {:total => 1 }
   
   def create

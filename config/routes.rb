@@ -1,20 +1,20 @@
-ActionController::Routing::Routes.draw do |map| 
+ActionController::Routing::Routes.draw do |map|
  
- ## API
-  
-  map.namespace(:api) do |api| 
-    api.resources :journeys do |journey|
-      journey.resources :tiles, :member => {:map => :get}
+  #map.namespace(:api) do |api| 
+    map.resources :journeys do |journey|
+      journey.resources :tiles, :member => {:map => :get, :feed => :get} do |tile|
+        tile.resources :public_messages
+      end
       journey.resources :pictures
       journey.resources :venues do |venue|
         venue.resource :presence
       end
     end 
     
-    api.resources :users do |user|
+    map.resources :users do |user|
       user.resources :pings
     end    
-  end
+  #end
   
   ## OAUTH
   
@@ -35,6 +35,6 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  #map.connect ':controller/:action/:id'
+  #map.connect ':controller/:action/:id.:format'
 end

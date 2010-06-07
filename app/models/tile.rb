@@ -8,6 +8,7 @@ class Tile < ActiveRecord::Base
   has_many :pictures
   has_many :positions
   has_many :users, :through => :positions
+  has_many :public_messages
   
   before_create :adjust_coordinate_precision
   before_validation_on_create :set_codes
