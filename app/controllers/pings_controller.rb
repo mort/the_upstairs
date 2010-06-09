@@ -1,4 +1,6 @@
 class PingsController < ApplicationController
+  before_filter :oauth_required
+  
   log_activity_streams :current_user, :login, :enters_tile, 
           :@tile, :geohash, :create, :movement, {:total => 1 }
   

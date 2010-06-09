@@ -1,6 +1,7 @@
 class TilesController < ApplicationController
-  before_filter :require_user, :only => :index
-  #before_filter :validate_request, :except => :index
+
+  before_filter :oauth_required, :only => [:show, :map]
+  before_filter :validate_request, :except => :index
   
   def index
     conditions = {}
