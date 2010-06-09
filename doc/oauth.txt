@@ -1,0 +1,4 @@
+oauth --consumer-key 4W3Wj1BO4T2Dglt9pNMl --consumer-secret 5ctPK7n8V695rd1uVEPOKDcv2Ak3ptvCiplHH6Lk --access-token-url http://durden.dev/oauth/access_token --request-token-url http://durden.dev/oauth/request_token --authorize-url http://durden.dev/oauth/authorize authorize
+
+twistd -n oauth_proxy --consumer-key  4W3Wj1BO4T2Dglt9pNMl --consumer-secret  5ctPK7n8V695rd1uVEPOKDcv2Ak3ptvCiplHH6Lk --token esxMpOTZxhvzCov3YzeP --token-secret nCkj2acM9HfXai6Wats5OULY0gymjIBnV39T9XJT
+curl -sx http://localhost:8001 -L -d "lat=51.49&lon=-0.17" http://durden.dev/users/1/pings
