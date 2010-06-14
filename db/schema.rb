@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(:version => 20100611222052) do
     t.integer  "user_id"
     t.string   "event_type"
     t.text     "body"
+    t.boolean  "actionable"
     t.integer  "status",     :limit => 1, :default => 0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"

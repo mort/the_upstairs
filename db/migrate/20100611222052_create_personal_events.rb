@@ -4,6 +4,7 @@ class CreatePersonalEvents < ActiveRecord::Migration
       t.references(:user)
       t.string :event_type
       t.text :body
+      t.boolean :actionable
       t.integer :status, :limit => 1, :null => false, :default => 0
       t.timestamps
     end
