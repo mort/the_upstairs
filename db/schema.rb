@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100606093029) do
+ActiveRecord::Schema.define(:version => 20100611222052) do
 
   create_table "activity_stream_preferences", :force => true do |t|
     t.string   "activity"
@@ -113,6 +113,15 @@ ActiveRecord::Schema.define(:version => 20100606093029) do
   end
 
   add_index "oauth_tokens", ["token"], :name => "index_oauth_tokens_on_token", :unique => true
+
+  create_table "personal_events", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "event_type"
+    t.text     "body"
+    t.integer  "status",     :limit => 1, :default => 0, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "pings", :force => true do |t|
     t.integer  "user_id"

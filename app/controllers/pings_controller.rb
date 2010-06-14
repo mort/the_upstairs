@@ -5,7 +5,7 @@ class PingsController < ApplicationController
           :@tile, :geohash, :create, :movement, {:total => 1 }
   
   def create
-    user = User.find(params[:user_id])
+    user = current_user
     ping = user.pings.create(:lat => params[:lat], :lon => params[:lon])    
     position = ping.position
     journey = user.ongoing_journey
