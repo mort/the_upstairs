@@ -1,7 +1,6 @@
 class TilesController < ApplicationController
 
   before_filter :oauth_required, :only => [:show, :map]
-  before_filter :validate_request, :except => :index
   
   def index
     conditions = {}
@@ -11,7 +10,8 @@ class TilesController < ApplicationController
   
   def show
     @tile = Tile.find(params[:id])
-
+    verify_in_tile(@tile)
+    
     respond_to do |format|
       format.json
     end
@@ -20,6 +20,7 @@ class TilesController < ApplicationController
   
   def map
     @tile = Tile.find(params[:id], :include => :features)
+    verify_in_tile(@tile)
     
     respond_to do |format|
       format.json
@@ -28,6 +29,7 @@ class TilesController < ApplicationController
   
   def feed
     @tile = Tile.find(params[:id])
+    verify_in_tile(@tile)
     
     @messages = @tile.public_messages
     
@@ -36,9 +38,5 @@ class TilesController < ApplicationController
     end
   end
   
-  private
   
-  def validate_request
-    render :text => '', :status => 404 unless (current_user.in_journey?(params[:journey_id]) && current_user.in_tile?(params[:id]))
-  end
 end

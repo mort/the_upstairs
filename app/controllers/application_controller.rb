@@ -61,6 +61,10 @@ class ApplicationController < ActionController::Base
        session[:return_to] = nil
      end
 
+     def verify_in_tile(tile)
+       render :text => '', :status => 404 unless (current_user.in_journey?(params[:journey_id]) && current_user.in_tile?(tile.id))
+     end
+
   
   
 end
