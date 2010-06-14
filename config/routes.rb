@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
  
   #map.namespace(:api) do |api| 
+    map.resources :pings
     map.resources :journeys do |journey|
       journey.resources :tiles, :member => {:map => :get, :feed => :get} do |tile|
         tile.resources :public_messages
@@ -12,7 +13,7 @@ ActionController::Routing::Routes.draw do |map|
     end 
     
     map.resources :users do |user|
-      user.resources :pings
+      user.resources :personal_events      
     end    
   #end
   
