@@ -4,7 +4,8 @@
 	t[:meta] = {
 		:journey_id => current_user.ongoing_journey.id,
 		:user_id => current_user.id,
-		:elapsed_journey_time => (current_user.ongoing_journey.elapsed_time)
+		:elapsed_journey_time => (current_user.ongoing_journey.elapsed_time),
+		:tile_id => @tile.id
 	}
 	
 	t[:look] = {
@@ -24,14 +25,14 @@
 
 <%- 
 	
-	unless @tiles.pictures.blank?
+	unless @tile.pictures.blank?
 		t[:pictures] = []
 		@tile.pictures.each do |p|
 			t[:pictures] << {:id => p.id, :lon => p.lon, :lat => p.lat, :title => p.title, :url => p.url, :geohash => p.geohash, :link => journey_picture_url(current_user.ongoing_journey, p)}
 		end
 	end
 
-	unless @tiles.venues.blank?
+	unless @tile.venues.blank?
 		t[:venues] = []
 	
 		@tile.venues.each do |v|

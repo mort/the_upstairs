@@ -4,7 +4,8 @@
 	t[:meta] = {
 		:journey_id => current_user.ongoing_journey.id,
 		:user_id => current_user.id,
-		:elapsed_journey_time => (current_user.ongoing_journey.elapsed_time)
+		:elapsed_journey_time => (current_user.ongoing_journey.elapsed_time),
+		:tile_id => @tile.id
 	}
 	
 	t[:look] = {

@@ -10,6 +10,7 @@ class PingsController < ApplicationController
     position = ping.position
     journey = user.ongoing_journey
     @tile = position.tile
-    redirect_to(journey_tile_url(journey, @tile, :format => :json))
+    #redirect_to(journey_tile_url(journey, @tile, :format => :json))
+    render :template => 'tiles/show.json.erb'
   end
 end
