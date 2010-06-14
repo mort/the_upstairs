@@ -23,20 +23,25 @@
  -%>
 
 <%- 
-	t[:pictures] = []
-	t[:venues] = []
 	
-	@tile.pictures.each do |p|
-		t[:pictures] << {:id => p.id, :lon => p.lon, :lat => p.lat, :title => p.title, :url => p.url, :geohash => p.geohash, :link => journey_picture_url(current_user.ongoing_journey, p)}
+	unless @tiles.pictures.blank?
+		t[:pictures] = []
+		@tile.pictures.each do |p|
+			t[:pictures] << {:id => p.id, :lon => p.lon, :lat => p.lat, :title => p.title, :url => p.url, :geohash => p.geohash, :link => journey_picture_url(current_user.ongoing_journey, p)}
+		end
 	end
+
+	unless @tiles.venues.blank?
+		t[:venues] = []
 	
-	@tile.venues.each do |v|
-		venue = {:id => v.id,:lon => v.lon, :lat => v.lat, :title => v.title, :url => v.url, :geohash => v.geohash}
-		venue[:links] = {}
+		@tile.venues.each do |v|
+			venue = {:id => v.id,:lon => v.lon, :lat => v.lat, :title => v.title, :url => v.url, :geohash => v.geohash}
+			venue[:links] = {}
 		
-		venue[:links][:look] = journey_venue_url(current_user.ongoing_journey, v)
-		venue[:links][:presence] = journey_venue_presence_url(current_user.ongoing_journey, v)
+			venue[:links][:look] = journey_venue_url(current_user.ongoing_journey, v)
+			venue[:links][:presence] = journey_venue_presence_url(current_user.ongoing_journey, v)
 		
-		t[:venues] << venue
+			t[:venues] << venue
+		end
 	end
  -%><%= t.to_json %>
