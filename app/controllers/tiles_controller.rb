@@ -18,7 +18,7 @@ class TilesController < ApplicationController
   end
   
   
-  def map
+  def look
     @tile = Tile.find(params[:id], :include => :features)
     verify_in_tile(@tile)
     

@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   #map.namespace(:api) do |api| 
     map.resources :pings
     map.resources :journeys do |journey|
-      journey.resources :tiles, :member => {:map => :get, :feed => :get} do |tile|
+      journey.resources :tiles, :member => {:look => :get, :feed => :get} do |tile|
         tile.resources :public_messages
       end
       journey.resources :pictures
