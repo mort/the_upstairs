@@ -1,2 +1,0 @@
-class PublicMessagesController < ApplicationController
-end
