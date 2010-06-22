@@ -7,7 +7,10 @@ class Tile < ActiveRecord::Base
   has_many :venues
   has_many :pictures
   has_many :positions
-  has_many :users, :through => :positions
+  
+  has_many :journeys, :through => :positions
+  has_many :current_journeys, :through => :positions, :source => :journey, :conditions => 'positions.expired_at IS NULL'
+  
   has_many :public_messages
   
   before_create :adjust_coordinate_precision
