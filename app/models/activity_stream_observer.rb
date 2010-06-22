@@ -6,13 +6,12 @@ class ActivityStreamObserver < ActiveRecord::Observer
     case act.activity
       when 'movement' 
         t = Tile.find(act.object_id)
-        t.public_messages.create(:body => "#{n} enters the tile")
+        Metatron.tell_to_all_travelers_on_tile(t,"#{n} enters the tile")
       when 'presence' 
         f = Feature.find(act.object_id)
         t = f.tile
         v = (act.verb == 'enters_venue') ? "enters" : 'leaves'
-    
-        t.public_messages.create(:body => "#{n} #{v} venue #{f.title}")
+        Metatron.tell_to_all_travelers_in_venue(f,"#{n} #{v} venue #{f.title}")
     end
     
     
