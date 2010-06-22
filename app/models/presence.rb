@@ -15,7 +15,7 @@ class Presence < ActiveRecord::Base
   private
   
   def cancel_prior!
-    ActiveRecord::Base.connection.execute("UPDATE PRESENCES SET finished_at = '#{Time.now.to_s(:db)}' WHERE user_id = #{user.id} AND finished_at IS NULL")
+    ActiveRecord::Base.connection.execute("UPDATE presences SET finished_at = '#{Time.now.to_s(:db)}' WHERE user_id = #{user.id} AND finished_at IS NULL")
   end
 
 end
