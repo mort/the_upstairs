@@ -83,6 +83,9 @@ ActiveRecord::Schema.define(:version => 20100621215733) do
 
   create_table "feed_items", :force => true do |t|
     t.integer  "journey_id"
+    t.integer  "position_id"
+    t.integer  "user_id"
+    t.integer  "presence_id"
     t.string   "title"
     t.string   "feed_item_type"
     t.text     "body"
@@ -129,6 +132,7 @@ ActiveRecord::Schema.define(:version => 20100621215733) do
     t.integer  "user_id"
     t.string   "event_type"
     t.text     "body"
+    t.boolean  "actionable"
     t.integer  "status",     :limit => 1, :default => 0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"

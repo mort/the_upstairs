@@ -26,17 +26,6 @@ class TilesController < ApplicationController
       format.json
     end
   end
-  
-  def feed
-    @tile = Tile.find(params[:id])
-    verify_in_tile(@tile)
     
-    @messages = @tile.public_messages
-    
-    respond_to do |format|
-      format.atom
-    end
-  end
-  
   
 end

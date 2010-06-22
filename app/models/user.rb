@@ -1,17 +1,17 @@
 class User < ActiveRecord::Base
-  has_one :journey, :conditions => "status = #{Journey::STATUSES[:ongoing]}", :order => 'created_at DESC'
   has_many :journeys, :order => 'created_at DESC'
+  has_one :journey, :conditions => "status = #{Journey::STATUSES[:ongoing]}", :order => 'created_at DESC'
   
   has_many :pings
-  has_many :tiles, :through => :positions
-  
+    
   has_many :presences
+  has_one  :current_presence, :class_name => 'Presence', :conditions => 'presences.finished_at IS NULL', :order => 'created_at DESC'
   
   has_many :client_applications
   has_many :tokens, :class_name => "OauthToken", :order => "authorized_at desc", :include => [:client_application]
   
-  has_many :personal_events
-  
+  has_many :feed_items, :order => 'created_at DESC'
+    
   acts_as_authentic 
   
   def ongoing_journey

@@ -3,7 +3,7 @@ class Position < ActiveRecord::Base
   belongs_to :tile
   belongs_to :ping
   belongs_to :journey
-  
+    
   before_create :expire_prior!
   
   named_scope :active, :conditions => 'expired_at IS NULL'

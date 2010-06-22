@@ -1,6 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :feed_items
-
  
   #map.namespace(:api) do |api| 
     map.resources :pings
@@ -12,6 +10,8 @@ ActionController::Routing::Routes.draw do |map|
       journey.resources :venues do |venue|
         venue.resource :presence
       end
+      
+      journey.resources :feed_items, :as => 'feed'
     end 
     
     map.resources :users do |user|
