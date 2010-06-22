@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :feed_items
+
  
   #map.namespace(:api) do |api| 
     map.resources :pings

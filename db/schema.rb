@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100611222052) do
+ActiveRecord::Schema.define(:version => 20100621215733) do
 
   create_table "activity_stream_preferences", :force => true do |t|
     t.string   "activity"
@@ -81,6 +81,17 @@ ActiveRecord::Schema.define(:version => 20100611222052) do
     t.datetime "updated_at"
   end
 
+  create_table "feed_items", :force => true do |t|
+    t.integer  "journey_id"
+    t.string   "title"
+    t.string   "feed_item_type"
+    t.text     "body"
+    t.boolean  "actionable"
+    t.datetime "read_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "journeys", :force => true do |t|
     t.integer  "user_id"
     t.string   "token"
@@ -118,7 +129,6 @@ ActiveRecord::Schema.define(:version => 20100611222052) do
     t.integer  "user_id"
     t.string   "event_type"
     t.text     "body"
-    t.boolean  "actionable"
     t.integer  "status",     :limit => 1, :default => 0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -138,6 +148,7 @@ ActiveRecord::Schema.define(:version => 20100611222052) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "journey_id"
+    t.datetime "expired_at"
   end
 
   create_table "presences", :force => true do |t|

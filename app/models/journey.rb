@@ -6,6 +6,7 @@ class Journey < ActiveRecord::Base
   
   has_one :position, :order => 'created_at DESC'
   has_many :positions  
+  has_many :feed_items
 
   named_scope :ongoing, :conditions => {:status => STATUSES[:ongoing]}
 
