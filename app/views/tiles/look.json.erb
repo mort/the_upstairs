@@ -25,14 +25,14 @@
 
 <%- 
 	
-	unless @tile.pictures.blank?
+	unless (@tile.pictures.blank? || !@tile.pictures.loaded?)
 		t[:pictures] = []
 		@tile.pictures.each do |p|
 			t[:pictures] << {:id => p.id, :lon => p.lon, :lat => p.lat, :title => p.title, :url => p.url, :geohash => p.geohash, :link => journey_picture_url(current_user.ongoing_journey, p)}
 		end
 	end
-
-	unless @tile.venues.blank?
+	
+	unless(@tile.venues.blank? || !@tile.venues.loaded?)
 		t[:venues] = []
 	
 		@tile.venues.each do |v|

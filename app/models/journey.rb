@@ -10,10 +10,8 @@ class Journey < ActiveRecord::Base
   has_one :current_position, :class_name => 'Position', :conditions => 'expired_at IS NULL', :order => 'created_at DESC'
   
   has_many :tiles, :through => :positions
-  has_one  :current_tile,  :through => :positions, :conditions => 'positions.expired_at IS NULL', :order => 'created_at DESC'
-  
-  delegate [:current_tile, :current_position], :to => :user
-  
+  has_one  :current_tile,  :through => :positions, :source => :tile, :conditions => 'positions.expired_at IS NULL', :order => 'created_at DESC'
+    
   named_scope :ongoing, :conditions => {:status => STATUSES[:ongoing]}
 
   def elapsed_time

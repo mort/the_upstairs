@@ -62,7 +62,9 @@ class ApplicationController < ActionController::Base
      end
 
      def verify_in_tile(tile)
-       render :text => '', :status => 404 unless (current_user.in_journey?(params[:journey_id]) && current_user.in_tile?(tile.id))
+       unless (current_user.in_journey?(params[:journey_id]) && current_user.in_tile?(tile.id))
+         render(:text => '', :status => 404) and return
+       end
      end
 
   

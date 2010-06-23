@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :journeys, :order => 'created_at DESC'
-  has_one :journey, :conditions => "status = #{Journey::STATUSES[:ongoing]}", :order => 'created_at DESC'
+  has_one  :journey, :conditions => "status = #{Journey::STATUSES[:ongoing]}", :order => 'created_at DESC'
   
   has_many :pings
     

@@ -19,7 +19,10 @@ class TilesController < ApplicationController
   
   
   def look
-    @tile = Tile.find(params[:id], :include => :features)
+    incl = 'features'
+    incl = params[:filter] if ['venues','pictures'].include?(params[:filter])
+    
+    @tile = Tile.find(params[:id], :include => incl.to_sym)
     verify_in_tile(@tile)
     
     respond_to do |format|
