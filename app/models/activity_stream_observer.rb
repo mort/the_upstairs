@@ -6,7 +6,7 @@ class ActivityStreamObserver < ActiveRecord::Observer
     case act.activity
       when 'movement' 
         t = Tile.find(act.object_id)
-        Metatron.tell_all_travelers_on_tile(t,"#{n} enters the tile",'notice')
+        Metatron.tell_all_travelers(t,"#{n} enters the tile",'notice')
      # when 'presence' 
        # f = Feature.find(act.object_id)
        # t = f.tile

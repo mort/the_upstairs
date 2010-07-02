@@ -1,38 +1,32 @@
 class PresencesController < ApplicationController
+  
   before_filter :oauth_required
+  before_filter :fetch_venue
+  
   log_activity_streams :current_user, :login, :enters_venue, :@venue, :title, :create,  :presence, {:total => 1 }        
   log_activity_streams :current_user, :login, :leaves_venue, :@venue, :title, :destroy, :presence, {:total => 1 }
 
-  def create
-    @venue = Venue.find(params[:venue_id])
-    tile = @venue.tile
 
-    when_in(tile) do |v| 
-      current_user.presences.create(:venue_id => @venue.id)
-      render :text => @venue.to_json, :status => 201 and return
-    end
+  def create
+    tile = @venue.tile
     
+    when_in(tile) {
+      current_user.presences.create(:venue_id => @venue.id)
+      render :text => @venue.to_json, :status => 201 
+    }
   end
 
-  def destroy
-    
-    presence = current_user.presences.active.find_by_venue_id(params[:venue_id])
-    
-    @venue = presence.venue unless presence.nil?
-      
-    when_in(@venue.tile) {
-      
-      text,status = if presence.nil?
-        ['', 404]
-      else
-        presence.finish!
-        [@venue.to_json, 204]
-      end
-
-      render :text => text, :status => status    
-
-    }  
-    
+  def destroy 
+    when_in(@venue) {
+      current_user.current_presence.finish!
+      render :text => @venue.to_json, :status =>  204
+    }
+  end
+  
+  private
+  
+  def fetch_venue
+    @venue = Venue.find(params[:venue_id])
   end
   
 end

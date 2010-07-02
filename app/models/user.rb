@@ -21,6 +21,14 @@ class User < ActiveRecord::Base
   def current_tile
     ongoing_journey.current_tile
   end
+
+  def current_venue
+   current_presence.venue
+  end
+  
+  def currently_in_venue?
+    !current_presence.nil?
+  end
   
   def in_tile?(tile_id)
     current_tile.id == tile_id.to_i
@@ -28,6 +36,10 @@ class User < ActiveRecord::Base
   
   def in_journey?(journey_id)
     ongoing_journey.id == journey_id.to_i
+  end
+  
+  def in_venue?(venue_id)
+    current_presence.venue.id == venue_id.to_i
   end
 
   def admin?

@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
  
   #map.namespace(:api) do |api| 
     map.resources :pings
-    map.resources :journeys do |journey|
+    map.resources :journeys, :member => {:stats => :get} do |journey|
       journey.resources :tiles, :member => {:look => :get, :feed => :get} do |tile|
         tile.resources :public_messages
       end
@@ -14,9 +14,7 @@ ActionController::Routing::Routes.draw do |map|
       journey.resources :feed_items, :as => 'feed'
     end 
     
-    map.resources :users do |user|
-      user.resources :personal_events      
-    end    
+
   #end
   
   ## OAUTH

@@ -1,14 +1,11 @@
 class Metatron
 
-  def self.tell_all_travelers_on_tile(tile,msg,msg_type)
-    self.do_mass_journey_notifications(tile.current_journeys,msg,msg_type)
+  def self.tell_all_travelers(ubication,msg,msg_type)
+    return unless ubication.respond_to?(:current_journeys)
+    self.do_mass_journey_notifications(ubication.current_journeys,msg,msg_type)
   end
   
-  def self.tell_all_travelers_in_venue(venue,msg,msg_type)
-    self.do_mass_journey_notifications(venue.current_journeys,msg,msg_type)
-  end
-  
-  def self.do_mass_journey_notifications(journeys, msg, msg_type)
+  def self.do_mass_journey_notifications(journeys,msg,msg_type)
     journeys.map { |j| self.do_journey_notification(j,msg,msg_type) }
   end
   

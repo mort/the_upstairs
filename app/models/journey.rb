@@ -13,9 +13,27 @@ class Journey < ActiveRecord::Base
   has_one  :current_tile,  :through => :positions, :source => :tile, :conditions => 'positions.expired_at IS NULL', :order => 'created_at DESC'
     
   named_scope :ongoing, :conditions => {:status => STATUSES[:ongoing]}
+  
+  delegate :stats, :to => :user, :prefix => true
 
   def elapsed_time
     Time.now - self.created_at
+  end
+  
+  
+  def stats
+    stats = {
+      :ongoing => (status == STATUSES[:ongoing]),
+      :elapsed_time => elapsed_time,
+      :user_id => user_id,
+      :position => current_position,
+      :tile => current_tile,
+      :in_venue => user.currently_in_venue?      
+    }
+    
+    stats.merge(:venue => user.current_venue) if user.currently_in_venue?
+
+    stats
   end
   
 end
