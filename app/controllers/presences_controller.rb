@@ -7,7 +7,7 @@ class PresencesController < ApplicationController
     @venue = Venue.find(params[:venue_id])
     tile = @venue.tile
 
-    if_in(tile) do |v| 
+    when_in(tile) do |v| 
       current_user.presences.create(:venue_id => @venue.id)
       render :text => @venue.to_json, :status => 201 and return
     end
@@ -20,7 +20,7 @@ class PresencesController < ApplicationController
     
     @venue = presence.venue unless presence.nil?
       
-    if_in(@venue.tile) {
+    when_in(@venue.tile) {
       
       text,status = if presence.nil?
         ['', 404]

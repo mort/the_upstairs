@@ -61,8 +61,15 @@ class ApplicationController < ActionController::Base
        session[:return_to] = nil
      end
 
-     def if_in(tile, &block)       
+     def when_in(entity, &block)
+       self.send("when_in_#{entity.class.to_s.downcase}".to_sym, &block) 
+     end
+
+     def when_in_tile(tile, &block)       
        (current_user.in_journey?(params[:journey_id]) && current_user.in_tile?(tile.id)) ?  block.call : render(:text => '', :status => 404) and return
+     end
+     
+     def when_in_venue(venue, &block)
      end
 
 end

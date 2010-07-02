@@ -11,7 +11,7 @@ class TilesController < ApplicationController
   def show
     @tile = Tile.find(params[:id])
     
-    if_in(@tile) {
+    when_in(@tile) {
       respond_to do |format|
         format.json
       end
@@ -26,7 +26,7 @@ class TilesController < ApplicationController
     
     @tile = Tile.find(params[:id], :include => incl.to_sym)
   
-    if_in(@tile) { 
+    when_in(@tile) { 
       respond_to do |format|
         format.json
       end
