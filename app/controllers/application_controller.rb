@@ -61,12 +61,8 @@ class ApplicationController < ActionController::Base
        session[:return_to] = nil
      end
 
-     def verify_in_tile(tile)
-       unless (current_user.in_journey?(params[:journey_id]) && current_user.in_tile?(tile.id))
-         render(:text => '', :status => 404) and return
-       end
+     def if_in(tile, &block)       
+       (current_user.in_journey?(params[:journey_id]) && current_user.in_tile?(tile.id)) ?  block.call : render(:text => '', :status => 404) and return
      end
 
-  
-  
 end

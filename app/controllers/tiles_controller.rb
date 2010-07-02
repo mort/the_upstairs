@@ -10,11 +10,13 @@ class TilesController < ApplicationController
   
   def show
     @tile = Tile.find(params[:id])
-    verify_in_tile(@tile)
     
-    respond_to do |format|
-      format.json
-    end
+    if_in(@tile) {
+      respond_to do |format|
+        format.json
+      end
+    }
+    
   end
   
   
@@ -23,11 +25,14 @@ class TilesController < ApplicationController
     incl = params[:filter] if ['venues','pictures'].include?(params[:filter])
     
     @tile = Tile.find(params[:id], :include => incl.to_sym)
-    verify_in_tile(@tile)
-    
-    respond_to do |format|
-      format.json
-    end
+  
+    if_in(@tile) { 
+      respond_to do |format|
+        format.json
+      end
+    }
+  
+  
   end
     
   

@@ -5,28 +5,34 @@ class PresencesController < ApplicationController
 
   def create
     @venue = Venue.find(params[:venue_id])
-    verify_in_tile(@venue.tile)
-    current_user.presences.create(:venue_id => @venue.id)
-    render :text => @venue.to_json, :status => 201
+    tile = @venue.tile
+
+    if_in(tile) do |v| 
+      current_user.presences.create(:venue_id => @venue.id)
+      render :text => @venue.to_json, :status => 201 and return
+    end
+    
   end
 
   def destroy
     
     presence = current_user.presences.active.find_by_venue_id(params[:venue_id])
     
-    unless presence.nil?
-      @venue = presence.venue
-      verify_in_tile(@venue.tile)  
-    end
-    
-    text,status = if presence.nil?
-      ['', 404]
-    else
-      presence.finish!
-      [@venue.to_json, 204]
-    end
+    @venue = presence.venue unless presence.nil?
+      
+    if_in(@venue.tile) {
+      
+      text,status = if presence.nil?
+        ['', 404]
+      else
+        presence.finish!
+        [@venue.to_json, 204]
+      end
 
-    render :text => text, :status => status    
+      render :text => text, :status => status    
+
+    }  
+    
   end
   
 end
