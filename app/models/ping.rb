@@ -1,4 +1,5 @@
 class Ping < ActiveRecord::Base
+  validates_presence_of :lat, :lon
  
   belongs_to :user
   has_one :position
