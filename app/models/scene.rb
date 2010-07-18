@@ -14,8 +14,8 @@ class Scene < ActiveRecord::Base
     end
   end
   
-  def extract_features
-    [:flickr,:oos].each do |service|
+  def extract_features(*services)
+    services.each do |service|
       if content[:results].has_key?(service)
         results = content[:results][service][:search][:results]
         results.each do |r|

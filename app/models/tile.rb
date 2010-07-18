@@ -7,6 +7,7 @@ class Tile < ActiveRecord::Base
   has_many :venues
   has_many :pictures
   has_many :positions
+  has_many :clusters
   
   has_many :journeys, :through => :positions
   has_many :current_journeys, :through => :positions, :source => :journey, :conditions => 'positions.expired_at IS NULL'
@@ -195,6 +196,50 @@ class Tile < ActiveRecord::Base
   def reverse_geocode!
     res = Geokit::Geocoders::GoogleGeocoder::reverse_geocode("#{self.lat},#{self.lon}")
     update_attribute(:reverse_geocoding_data,res)
+  end
+  
+  def clusterify!(obj = :pictures, threshold = 5, n = 5, clusterer = nil, p = 4)
+      
+      clusterer ||= Ai4r::Clusterers::KMeans.new
+      items = self.send(obj)
+      item_count = items.count
+      item_name = obj.to_s.camelize
+      precision = "%0.#{p}f"
+    
+      if item_count > threshold
+         data = Ai4r::Data::DataSet.new(:data_items => items.map{ |p| [p.lat,p.lon] })
+         cluster_set = clusterer.build(data, n)
+          
+        cluster_set.centroids.each do |centroid|
+          puts centroid.inspect
+          lat, lon = *centroid
+          self.clusters.create(:lat => (precision % lat).to_f, :lon => (precision % lon).to_f, :cluster_type => item_name)
+        end
+        
+        items.each do |item|
+          
+          i = cluster_set.eval([item.lat,item.lon])
+          puts "i = {#{i}}"
+          centroid = cluster_set.centroids[i]
+          puts "centroid = #{centroid}"
+          c_lat = (precision % centroid[0]).to_f
+          c_lon = (precision % centroid[1]).to_f
+          cluster = self.clusters.first(:conditions => {:lat => c_lat, :lon => c_lon, :cluster_type => item_name})
+          cluster.pictures << item unless cluster.nil?
+        end
+      end    
+      
+      cluster_set
+  end
+  
+  def contains?(thing, res = 3)
+    return false unless thing.respond_to?(:csquare)
+    return thing.csquare.split(':')[0,res-1] == (self.csquare_code.split(':')[0,res-1])   
+  end
+  
+  
+  def self.prune(obj = :pictures)
+     Tile.all.each {|t| t.send(obj).each {|p| p.delete unless t.contains?(p) }  }
   end
 
   private

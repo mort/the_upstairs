@@ -1,2 +1,3 @@
 class Picture < Feature
+  
 end

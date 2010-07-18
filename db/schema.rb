@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100621215733) do
+ActiveRecord::Schema.define(:version => 20100717102305) do
 
   create_table "activity_stream_preferences", :force => true do |t|
     t.string   "activity"
@@ -69,6 +69,13 @@ ActiveRecord::Schema.define(:version => 20100621215733) do
 
   add_index "client_applications", ["key"], :name => "index_client_applications_on_key", :unique => true
 
+  create_table "clusters", :force => true do |t|
+    t.integer "tile_id"
+    t.string  "cluster_type"
+    t.float   "lat"
+    t.float   "lon"
+  end
+
   create_table "features", :force => true do |t|
     t.integer  "tile_id"
     t.string   "service"
@@ -79,13 +86,11 @@ ActiveRecord::Schema.define(:version => 20100621215733) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "cluster_id"
   end
 
   create_table "feed_items", :force => true do |t|
     t.integer  "journey_id"
-    t.integer  "position_id"
-    t.integer  "user_id"
-    t.integer  "presence_id"
     t.string   "title"
     t.string   "feed_item_type"
     t.text     "body"
@@ -132,7 +137,6 @@ ActiveRecord::Schema.define(:version => 20100621215733) do
     t.integer  "user_id"
     t.string   "event_type"
     t.text     "body"
-    t.boolean  "actionable"
     t.integer  "status",     :limit => 1, :default => 0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
