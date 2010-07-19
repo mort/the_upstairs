@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :user_requests
+
  
   #map.namespace(:api) do |api| 
     map.resources :pings
@@ -10,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
       journey.resources :venues do |venue|
         venue.resource :presence
       end
-      
+    
       journey.resources :feed_items, :as => 'feed'
     end 
     
@@ -31,7 +33,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :user_session
   map.root :controller => "user_sessions", :action => "new" # optional, this just sets the root route
   map.resource :account, :controller => "users"
-  map.resources :users
+
+  map.resources :users do |user|
+    user.resources :user_requests, :member => {:accept => :put, :decline => :put}
+  end
 
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should

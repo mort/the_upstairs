@@ -68,8 +68,8 @@ def oauth_helper_for_client(client)
 end
 
 def oauth_helper_for_client_and_user(client, user)
-  token = AccessToken.find_or_create_by_user_id_and_client_id(user.id, client.id)
-  OAuth::Signature::HMAC::SHA1.any_instance.stubs(:==).returns(true)
+  token = OauthToken.find_or_create_by_type_and_user_id_and_client_application_id('AccessToken', user.id, client.id)
+  mock.instance_of(OAuth::Signature::HMAC::SHA1).== { true }
   OAuth::Client::Helper.new(@request, {:consumer => client, :token => token})
 end
 

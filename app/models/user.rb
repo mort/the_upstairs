@@ -11,8 +11,12 @@ class User < ActiveRecord::Base
   has_many :tokens, :class_name => "OauthToken", :order => "authorized_at desc", :include => [:client_application]
   
   has_many :feed_items, :order => 'created_at DESC'
+  
+  has_many :engagements
     
-  acts_as_authentic 
+  acts_as_authentic do |c|
+    c.require_password_confirmation = false
+  end
   
   def ongoing_journey
     self.journey ||= self.journeys.create(:status => Journey::STATUSES[:ongoing])
@@ -40,6 +44,14 @@ class User < ActiveRecord::Base
   
   def in_venue?(venue_id)
     current_presence.venue.id == venue_id.to_i
+  end
+
+  def in_same_tile?(user_a, user_b)
+    user_a.current_tile == user_b.current_tile
+  end
+  
+  def in_same_venue?(user_a, user_b)
+    user_a.current_venue == user_b.current_venue
   end
 
   def admin?

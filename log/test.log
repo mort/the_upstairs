@@ -1,0 +1,167 @@
+  [4;36;1mUser Load (1.9ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = '@example.com') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'user0001') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '9f808f5c4bfc2a25d6705940f85dec40d2c2ad97cdce5dcb21d132739131a6df0ed91f6dab0b79149c80428f9afcbc91db6b7e7109ac4f4ae87633540a08e8d8') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."single_access_token" = 'RDyP4zeprV13zs2L1zXU') LIMIT 1[0m
+  [4;36;1mUser Load (1.9ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = '@example.com') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'user0001') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'b56ff4e9a77155e6d865aad8b1c7c5ae305b9e659fa7ce17bf87eb944464a879d37f7e0988447795dd6386ae7460117cf4cc8e624fcf34632bec2ac627ad9b6b') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."single_access_token" = 'HW0_QTe18NFHg5Xsgh35') LIMIT 1[0m
+  [4;36;1mUser Load (1.9ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = '@example.com') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'user0001') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '834ae8251b71770d0f54e5aecf9516dfcc267a08382233bf5e7c9be55cbd9314a1a69326d66efee10d936087b2a0823dd6d005f8a6b46130ace40efbcdc49d6f') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."single_access_token" = 'yP6uuhN_ZEEaOIMJqm2h') LIMIT 1[0m
+  [4;36;1mUser Load (27.8ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = '@example.com') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'user0001') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '61c3a5b5a092f3505b7f164e090e97de673fe9cbec959ebf4b055c820aa5461157ed52a93b3645c222efd6128c17356869607b75f804550c2682fdba28df51b6') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."single_access_token" = 'inMnmmy9gricrrvYLXcC') LIMIT 1[0m
+  [4;36;1mUser Load (1.9ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = 'mort@example.com') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'user0001') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'aa1fe19f8002ac435c0f60f6ceea5649d8d98e73433ec98d998b91b22fd5f7cebf83d8f69f0bdf9beae0a08267eb17f430e2f868e008659f93ef240065e91836') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."single_access_token" = 'Z6FIgH02RITgxj93DjQ8') LIMIT 1[0m
+  [4;36;1mUser Load (1.9ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = 'email0001@example.com') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'user0001') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'bf18a6e40e15fb2c35dfc7dcb0d512a6d73dabbb4645da07293be1923a7c126d5d339ccac7f0016222b8235001fe89b2970a61ca842d7c29d2dc071ac05389a5') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."single_access_token" = 'U4dkTnoC9pdkvZk--d26') LIMIT 1[0m
+  [4;36;1mUser Load (1.9ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = 'email0001@example.com') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'user0001') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = 'e3219e73d1b0823c2b6c89ad0cabe1c72858a9b2499d8d0e626e78c038519b45bd43ef2c7d4bcdcf984f30ebbfd75454414611b4fee735ad5f9139d1cf47959f') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."single_access_token" = 'Ibcmyq2tOce3eOtHnT6A') LIMIT 1[0m
+  [4;36;1mUser Create (26.9ms)[0m   [0;1mINSERT INTO "users" ("single_access_token", "last_request_at", "created_at", "activity_stream_token", "crypted_password", "perishable_token", "updated_at", "failed_login_count", "current_login_ip", "password_salt", "current_login_at", "persistence_token", "login_count", "last_login_ip", "login", "last_login_at", "email") VALUES('Ibcmyq2tOce3eOtHnT6A', NULL, '2010-07-18 17:54:53', NULL, 'c531facd72dbb2ca1fe228bddf11b023d7ca29c5a3dbbb8d34428b0094f2f8c57e0612964a3fcf5792b4216d3a8b23769e592a5768f195ebfa0091f6e5ed49b9', '69qJ-nAb9Oye-vmxu90y', '2010-07-18 17:54:53', 0, NULL, 'Ikyy1vvzPLvEa3vKGPyP', NULL, 'e3219e73d1b0823c2b6c89ad0cabe1c72858a9b2499d8d0e626e78c038519b45bd43ef2c7d4bcdcf984f30ebbfd75454414611b4fee735ad5f9139d1cf47959f', 0, NULL, 'user0001', NULL, 'email0001@example.com')[0m
+  [4;35;1mUser Load (1.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mUser Load (2.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = 'email0001@example.com') LIMIT 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'user0001') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '9a71295521fca724ed6e4431f07848a95c955cffc91074493a738eceb68c5ce308e902f637873b29eb91515c41955220d17c52247698c236f112ccbbeb338f94') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."single_access_token" = '6Fy9pcQRQntarlQgM57R') LIMIT 1[0m
+  [4;36;1mUser Load (1.9ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE (LOWER("users"."email") = 'email0001@example.com') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."login") = 'user0001') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."persistence_token" = '3ef60c02c59c864883ac6dbee912766960d404e44753b8fdfbb660ef3b61e0937ec29939ad8c57ec609568bef3e0773eb6b1e9fc66218794dc78ec51e9c81b77') LIMIT 1[0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT "users".id FROM "users" WHERE ("users"."single_access_token" = '1dttwq_36dsLq4IpKiom') LIMIT 1[0m
+  [4;36;1mUser Create (0.9ms)[0m   [0;1mINSERT INTO "users" ("single_access_token", "last_request_at", "created_at", "activity_stream_token", "crypted_password", "perishable_token", "updated_at", "failed_login_count", "current_login_ip", "password_salt", "current_login_at", "persistence_token", "login_count", "last_login_ip", "login", "last_login_at", "email") VALUES('1dttwq_36dsLq4IpKiom', NULL, '2010-07-18 17:56:20', NULL, 'b232f59c759c176c63cffc5cf207ec74215819ffd31f22391b8bf0a2021def3c356afce98fb6665cb7d3b6c551e077b11d739da6c97a1549e66283d6fa85dad7', 'WwYCFAERvcc2A7MesvD7', '2010-07-18 17:56:20', 0, NULL, 'WI1y14TxWW3AUEAVjCRG', NULL, '3ef60c02c59c864883ac6dbee912766960d404e44753b8fdfbb660ef3b61e0937ec29939ad8c57ec609568bef3e0773eb6b1e9fc66218794dc78ec51e9c81b77', 0, NULL, 'user0001', NULL, 'email0001@example.com')[0m
+  [4;35;1mUser Load (1.1ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mOauthToken Load (0.4ms)[0m   [0;1mSELECT * FROM "oauth_tokens" WHERE ("oauth_tokens"."type" = 'AccessToken' AND "oauth_tokens"."client_application_id" IS NULL AND "oauth_tokens"."user_id" = 1) LIMIT 1[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUser Columns (3.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (232.0ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'email0001@example.com') LIMIT 1[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'user0001') LIMIT 1[0m
+  [4;35;1mUser Load (2.9ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY '8f714f9d8ce6e994b013f86dad343805459debc521709018bc5de55c43287e369031030ca8dc07c8d4bd51a72703bef6b3bf71c8818a41a0023d98d4d2ff1756') LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`single_access_token` = BINARY 'IiIPWOCjNkstCmGEtioI') LIMIT 1[0m
+  [4;35;1mUser Create (59.4ms)[0m   [0mINSERT INTO `users` (`single_access_token`, `last_request_at`, `created_at`, `activity_stream_token`, `crypted_password`, `perishable_token`, `updated_at`, `failed_login_count`, `current_login_ip`, `password_salt`, `current_login_at`, `persistence_token`, `login_count`, `last_login_ip`, `login`, `last_login_at`, `email`) VALUES('IiIPWOCjNkstCmGEtioI', NULL, '2010-07-18 18:01:34', NULL, 'bf7105a90215162f07cca336469443b2a1796f81e72fe41a87011d846bf1b47eadb4a2f7e3da22f9eabdab25fe7b08bc5be35aa04115a472df712697a840233c', 'SY47YpNuwd0ChdreDAxO', '2010-07-18 18:01:34', 0, NULL, 'bVVcV-CiaUzqZVKSix-R', NULL, '8f714f9d8ce6e994b013f86dad343805459debc521709018bc5de55c43287e369031030ca8dc07c8d4bd51a72703bef6b3bf71c8818a41a0023d98d4d2ff1756', 0, NULL, 'user0001', NULL, 'email0001@example.com')[0m
+  [4;36;1mSQL (3.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mClientApplication Columns (4.1ms)[0m   [0;1mSHOW FIELDS FROM `client_applications`[0m
+  [4;35;1mSQL (3.7ms)[0m   [0mBEGIN[0m
+  [4;36;1mClientApplication Load (42.0ms)[0m   [0;1mSELECT `client_applications`.id FROM `client_applications` WHERE (`client_applications`.`key` = BINARY 'Mg6ZgLzXGFVXd5wA0WXS') LIMIT 1[0m
+  [4;35;1mClientApplication Create (0.5ms)[0m   [0mINSERT INTO `client_applications` (`name`, `created_at`, `support_url`, `callback_url`, `updated_at`, `url`, `user_id`, `key`, `secret`) VALUES('app0001', '2010-07-18 18:01:34', NULL, NULL, '2010-07-18 18:01:34', 'http://.example.com', 1, 'Mg6ZgLzXGFVXd5wA0WXS', 'He9tVwRH93iculFx0e0bY5k8Q3zuDi235R1VZc8j')[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mClientApplication Load (1.2ms)[0m   [0mSELECT * FROM `client_applications` WHERE (`client_applications`.`id` = 1) [0m
+  [4;36;1mOauthToken Columns (4.1ms)[0m   [0;1mSHOW FIELDS FROM `oauth_tokens`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mBEGIN[0m
+  [4;36;1mOauthToken Load (0.7ms)[0m   [0;1mSELECT `oauth_tokens`.id FROM `oauth_tokens` WHERE (`oauth_tokens`.`token` = BINARY 'y1CcolgnmXdUiJMeSQiV') LIMIT 1[0m
+  [4;35;1mOauthToken Create (8.7ms)[0m   [0mINSERT INTO `oauth_tokens` (`verifier`, `created_at`, `token`, `callback_url`, `authorized_at`, `updated_at`, `user_id`, `type`, `secret`, `invalidated_at`, `client_application_id`) VALUES(NULL, '2010-07-18 18:01:34', 'y1CcolgnmXdUiJMeSQiV', NULL, '2010-07-18 18:01:34', '2010-07-18 18:01:34', 1, 'AccessToken', 'bq4FZz0fbn77mE6X460UQVFtddK0IrukSCBgHX55', NULL, 1)[0m
+  [4;36;1mSQL (3.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOauthToken Load (0.6ms)[0m   [0mSELECT * FROM `oauth_tokens` WHERE (`oauth_tokens`.`id` = 1) [0m
+  [4;36;1mOauthToken Load (158.0ms)[0m   [0;1mSELECT * FROM `oauth_tokens` WHERE (`oauth_tokens`.`type` = 'AccessToken' AND `oauth_tokens`.`user_id` = 1 AND `oauth_tokens`.`client_application_id` = 1) LIMIT 1[0m
+  [4;35;1mSQL (96.5ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUser Columns (3.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (14.1ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'email0001@example.com') LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'user0001') LIMIT 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY '87c371c5c63cac7f6d73be0b12e4e4db86aa8ed5f08e3d952d096a3d0fc20e86843c7e6faf1001ffe2d79a2f2e7aa476650df5c82ebe0948753c3b8ce23ced3d') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`single_access_token` = BINARY 'WN5kMBMFPP_kaYf7Mm3G') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUser Columns (2.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'email0001@example.com') LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'user0001') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY '1e74c12dd6c31d6761ce17dba926f12c05041408924f356292e0c10272dc85771f9f0f272bb141baa006829e4bc2f003d3b2a90e73eb03c7763e39734d905a6a') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`single_access_token` = BINARY 'qyOZw7v5sLwC6GPVbEWv') LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUser Columns (43.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'email0001@example.com') LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'user0001') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY '80e1b92e7ea10f4e106eda1a417ce893be5e504bee02347d9e8f18f30fca82d8723034f112c53f01e3ce57757753d479e517b133d0e0177302446cb12a484489') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`single_access_token` = BINARY 'AgGZaZ05Rtra-J72hO0t') LIMIT 1[0m
+  [4;35;1mUser Create (0.6ms)[0m   [0mINSERT INTO `users` (`single_access_token`, `last_request_at`, `created_at`, `activity_stream_token`, `crypted_password`, `perishable_token`, `updated_at`, `failed_login_count`, `current_login_ip`, `password_salt`, `current_login_at`, `persistence_token`, `login_count`, `last_login_ip`, `login`, `last_login_at`, `email`) VALUES('AgGZaZ05Rtra-J72hO0t', NULL, '2010-07-18 20:32:53', NULL, 'dddee418abdf693d763ae0441406d1b8daac87f1ded6715ed13a849590764b820dd8b2613e25d3c3d21fbe8500f2ebb500622f7117821b0e2c5c13767645aefd', '6UaQdkPKuJcE6pCuQNPr', '2010-07-18 20:32:53', 0, NULL, 'WXUJTbVjsHvOtSGGLjGg', NULL, '80e1b92e7ea10f4e106eda1a417ce893be5e504bee02347d9e8f18f30fca82d8723034f112c53f01e3ce57757753d479e517b133d0e0177302446cb12a484489', 0, NULL, 'user0001', NULL, 'email0001@example.com')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mClientApplication Columns (2.6ms)[0m   [0;1mSHOW FIELDS FROM `client_applications`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mClientApplication Load (0.8ms)[0m   [0;1mSELECT `client_applications`.id FROM `client_applications` WHERE (`client_applications`.`key` = BINARY '2JbqRaoqSYXrJkW5I9Af') LIMIT 1[0m
+  [4;35;1mClientApplication Create (0.4ms)[0m   [0mINSERT INTO `client_applications` (`name`, `created_at`, `support_url`, `callback_url`, `updated_at`, `url`, `user_id`, `key`, `secret`) VALUES('app0001', '2010-07-18 20:32:53', NULL, NULL, '2010-07-18 20:32:53', 'http://.example.com', 1, '2JbqRaoqSYXrJkW5I9Af', 'G0DxX5orycOBMInle640nZeEs5IWdPAUQBeIbOBb')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mClientApplication Load (0.5ms)[0m   [0mSELECT * FROM `client_applications` WHERE (`client_applications`.`id` = 1) [0m
+  [4;36;1mOauthToken Columns (2.7ms)[0m   [0;1mSHOW FIELDS FROM `oauth_tokens`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOauthToken Load (0.6ms)[0m   [0;1mSELECT `oauth_tokens`.id FROM `oauth_tokens` WHERE (`oauth_tokens`.`token` = BINARY 'fP4tIlTnJ65l24J62NhN') LIMIT 1[0m
+  [4;35;1mOauthToken Create (0.5ms)[0m   [0mINSERT INTO `oauth_tokens` (`verifier`, `created_at`, `token`, `callback_url`, `authorized_at`, `updated_at`, `user_id`, `type`, `secret`, `invalidated_at`, `client_application_id`) VALUES(NULL, '2010-07-18 20:32:54', 'fP4tIlTnJ65l24J62NhN', NULL, '2010-07-18 20:32:53', '2010-07-18 20:32:54', 1, 'AccessToken', 'tDxoszBHAXMfFFZb5mPnzc1OE934EHZoEgoyAzqa', NULL, 1)[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOauthToken Load (0.5ms)[0m   [0mSELECT * FROM `oauth_tokens` WHERE (`oauth_tokens`.`id` = 1) [0m
+  [4;36;1mOauthToken Load (0.6ms)[0m   [0;1mSELECT * FROM `oauth_tokens` WHERE (`oauth_tokens`.`type` = 'AccessToken' AND `oauth_tokens`.`user_id` = 1 AND `oauth_tokens`.`client_application_id` = 1) LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUser Columns (3.6ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'email0001@example.com') LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'user0001') LIMIT 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY '9228604ac504d987b2c98ebe7499b73ca38fca79e5bad56aeefc1fafa7261b63fc123c61d0a4a52d061752afda9bd259dc27d3058aa52cf6138375372fa4cd04') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`single_access_token` = BINARY 'nZcdGg4x6tGcFhHZpnqt') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUser Columns (3.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.6ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'email0001@example.com') LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'user0001') LIMIT 1[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY '494582b55afbb5c491af5eb92a29d9ea6f0d4ed2ff4e54e9594a9c9774c837bce68049799cfbbb333609f45117a1ba44801f6478ff600b5effb6b6745d88c3d3') LIMIT 1[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`single_access_token` = BINARY 'hF-zC5s6U2DmJXmBZTm7') LIMIT 1[0m
+  [4;35;1mUser Create (0.5ms)[0m   [0mINSERT INTO `users` (`single_access_token`, `last_request_at`, `created_at`, `activity_stream_token`, `crypted_password`, `perishable_token`, `updated_at`, `failed_login_count`, `current_login_ip`, `password_salt`, `current_login_at`, `persistence_token`, `login_count`, `last_login_ip`, `login`, `last_login_at`, `email`) VALUES('hF-zC5s6U2DmJXmBZTm7', NULL, '2010-07-18 20:34:07', NULL, '80b6ee5dcfdb3688d1fdd7de660b12a947bfcacc7eaf7883c4e0be75b30a47fe4f20918a4b541e6065c1cd7766e4d8ff9dd1791cd30f7c5195426e4b1e6d0d63', 'oXOiHLTosAqt1YqDD1yg', '2010-07-18 20:34:07', 0, NULL, 'Jkie9WXyuRUvT5W8f8JY', NULL, '494582b55afbb5c491af5eb92a29d9ea6f0d4ed2ff4e54e9594a9c9774c837bce68049799cfbbb333609f45117a1ba44801f6478ff600b5effb6b6745d88c3d3', 0, NULL, 'user0001', NULL, 'email0001@example.com')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mClientApplication Columns (2.6ms)[0m   [0;1mSHOW FIELDS FROM `client_applications`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mClientApplication Load (0.8ms)[0m   [0;1mSELECT `client_applications`.id FROM `client_applications` WHERE (`client_applications`.`key` = BINARY 'FYyx1lzzwHkr6YXfJNJJ') LIMIT 1[0m
+  [4;35;1mClientApplication Create (0.4ms)[0m   [0mINSERT INTO `client_applications` (`name`, `created_at`, `support_url`, `callback_url`, `updated_at`, `url`, `user_id`, `key`, `secret`) VALUES('app0001', '2010-07-18 20:34:07', NULL, NULL, '2010-07-18 20:34:07', 'http://.example.com', 1, 'FYyx1lzzwHkr6YXfJNJJ', 'NYsD5zud5e6hhibckWSG4NfwTZNQXaRyQS26vKYu')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mClientApplication Load (0.5ms)[0m   [0mSELECT * FROM `client_applications` WHERE (`client_applications`.`id` = 1) [0m
+  [4;36;1mOauthToken Columns (2.7ms)[0m   [0;1mSHOW FIELDS FROM `oauth_tokens`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOauthToken Load (0.6ms)[0m   [0;1mSELECT `oauth_tokens`.id FROM `oauth_tokens` WHERE (`oauth_tokens`.`token` = BINARY 'gNhBBQXPCqO6t3ZMy1Iy') LIMIT 1[0m
+  [4;35;1mOauthToken Create (0.5ms)[0m   [0mINSERT INTO `oauth_tokens` (`verifier`, `created_at`, `token`, `callback_url`, `authorized_at`, `updated_at`, `user_id`, `type`, `secret`, `invalidated_at`, `client_application_id`) VALUES(NULL, '2010-07-18 20:34:07', 'gNhBBQXPCqO6t3ZMy1Iy', NULL, '2010-07-18 20:34:07', '2010-07-18 20:34:07', 1, 'AccessToken', 'eSB0QmTfUI1xsHjRRbc78My2cFroGJo6AQfOmQJ3', NULL, 1)[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mOauthToken Load (0.5ms)[0m   [0mSELECT * FROM `oauth_tokens` WHERE (`oauth_tokens`.`id` = 1) [0m
+  [4;36;1mOauthToken Load (0.6ms)[0m   [0;1mSELECT * FROM `oauth_tokens` WHERE (`oauth_tokens`.`type` = 'AccessToken' AND `oauth_tokens`.`user_id` = 1 AND `oauth_tokens`.`client_application_id` = 1) LIMIT 1[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+  [4;35;1mUser Columns (3.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (1.1ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`email`) = BINARY 'email0001@example.com') LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (LOWER(`users`.`login`) = BINARY 'user0001') LIMIT 1[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`persistence_token` = BINARY '8d5178fee3ff0c560783f6b52705c475ba0c12b95d90b3dfb0169c9f13c27ab10e10396e59263d158fbe7b3c220a728b4486d4e60935dc5107a39f355a3eae40') LIMIT 1[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`single_access_token` = BINARY 'ik1OzOcOIXcM0W0fIml9') LIMIT 1[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mROLLBACK[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mROLLBACK[0m

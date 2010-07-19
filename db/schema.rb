@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100717102305) do
+ActiveRecord::Schema.define(:version => 20100718103734) do
 
   create_table "activity_stream_preferences", :force => true do |t|
     t.string   "activity"
@@ -72,8 +72,18 @@ ActiveRecord::Schema.define(:version => 20100717102305) do
   create_table "clusters", :force => true do |t|
     t.integer "tile_id"
     t.string  "cluster_type"
-    t.float   "lat"
-    t.float   "lon"
+    t.decimal "lat",          :precision => 6, :scale => 4
+    t.decimal "lon",          :precision => 6, :scale => 4
+  end
+
+  create_table "engagements", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "requester_id"
+    t.integer  "request_id"
+    t.integer  "status"
+    t.datetime "finished_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "features", :force => true do |t|
@@ -96,6 +106,16 @@ ActiveRecord::Schema.define(:version => 20100717102305) do
     t.text     "body"
     t.boolean  "actionable"
     t.datetime "read_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "handshakes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "requester_id"
+    t.integer  "request_id"
+    t.integer  "status",       :default => 0, :null => false
+    t.datetime "broken_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -198,6 +218,17 @@ ActiveRecord::Schema.define(:version => 20100717102305) do
   end
 
   add_index "tiles", ["lat", "lon", "geohash", "csquare_code"], :name => "index_tiles_on_lat_and_lon_and_geohash_and_csquare_code", :unique => true
+
+  create_table "user_requests", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "requester_id"
+    t.string   "type",         :default => "", :null => false
+    t.integer  "status",       :default => 0,  :null => false
+    t.datetime "accepted_at"
+    t.datetime "declined_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "login",                                :null => false
