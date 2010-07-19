@@ -51,10 +51,10 @@ class User < ActiveRecord::Base
   end
   
   def in_same_venue_that?(user_b)
-    current_venue == user_b.current_venue
+    self.currently_in_venue? && user_b.currently_in_venue? && (self.current_venue == user_b.current_venue)
   end
   
-  def notify(msg, msg_type, options = {})
+  def notify_user(msg, msg_type, options = {})
     journey = ongoing_journey
     position = journey.current_position
     presence = current_presence
