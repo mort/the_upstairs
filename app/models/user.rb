@@ -46,12 +46,12 @@ class User < ActiveRecord::Base
     current_presence.venue.id == venue_id.to_i
   end
 
-  def in_same_tile?(user_a, user_b)
-    user_a.current_tile == user_b.current_tile
+  def in_same_tile?(user_b)
+    current_tile == user_b.current_tile
   end
   
-  def in_same_venue?(user_a, user_b)
-    user_a.current_venue == user_b.current_venue
+  def in_same_venue?(user_b)
+    current_venue == user_b.current_venue
   end
 
   def admin?
