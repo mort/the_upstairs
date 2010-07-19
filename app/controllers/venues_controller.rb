@@ -1,5 +1,2 @@
 class VenuesController < FeaturesController
-
- 
-
 end

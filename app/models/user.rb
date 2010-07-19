@@ -53,7 +53,15 @@ class User < ActiveRecord::Base
   def in_same_venue_that?(user_b)
     current_venue == user_b.current_venue
   end
-
+  
+  def notify(msg, msg_type, options = {})
+    journey = ongoing_journey
+    position = journey.current_position
+    presence = current_presence
+        
+    feed_items.create({:body => msg, :feed_item_type => msg_type, :journey => journey,  :position => position, :presence => presence}.merge(:options))
+  end
+  
   def admin?
     true
   end

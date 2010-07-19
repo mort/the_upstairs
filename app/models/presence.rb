@@ -8,14 +8,26 @@ class Presence < ActiveRecord::Base
   
   before_create :cancel_prior!
   
-  def finish!
-    self.update_attribute(:finished_at, Time.now)
+  def validate
+    errors.add_to_base 'Not in tile' unless user.in_tile?(venue.tile.id)
   end
-
+  
+  def before_destroy
+    errors.add_to_base 'Not in venue' unless user.in_venue?(venue.id)
+  end
+  
+  def destroy
+    finish!
+  end
+  
   private
   
   def cancel_prior!
     ActiveRecord::Base.connection.execute("UPDATE presences SET finished_at = '#{Time.now.to_s(:db)}' WHERE user_id = #{user.id} AND finished_at IS NULL")
+  end
+
+  def finish!
+    self.update_attribute(:finished_at, Time.now)
   end
 
 end

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100718103734) do
+ActiveRecord::Schema.define(:version => 20100719072400) do
 
   create_table "activity_stream_preferences", :force => true do |t|
     t.string   "activity"
@@ -72,15 +72,15 @@ ActiveRecord::Schema.define(:version => 20100718103734) do
   create_table "clusters", :force => true do |t|
     t.integer "tile_id"
     t.string  "cluster_type"
-    t.decimal "lat",          :precision => 6, :scale => 4
-    t.decimal "lon",          :precision => 6, :scale => 4
+    t.float   "lat"
+    t.float   "lon"
   end
 
   create_table "engagements", :force => true do |t|
     t.integer  "user_id"
     t.integer  "requester_id"
     t.integer  "request_id"
-    t.integer  "status"
+    t.integer  "status",       :default => 0, :null => false
     t.datetime "finished_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -101,6 +101,9 @@ ActiveRecord::Schema.define(:version => 20100718103734) do
 
   create_table "feed_items", :force => true do |t|
     t.integer  "journey_id"
+    t.integer  "position_id"
+    t.integer  "user_id"
+    t.integer  "presence_id"
     t.string   "title"
     t.string   "feed_item_type"
     t.text     "body"
@@ -108,6 +111,7 @@ ActiveRecord::Schema.define(:version => 20100718103734) do
     t.datetime "read_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "actions"
   end
 
   create_table "handshakes", :force => true do |t|
@@ -157,6 +161,7 @@ ActiveRecord::Schema.define(:version => 20100718103734) do
     t.integer  "user_id"
     t.string   "event_type"
     t.text     "body"
+    t.boolean  "actionable"
     t.integer  "status",     :limit => 1, :default => 0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"

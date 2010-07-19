@@ -18,4 +18,8 @@ class Metatron
   end
 
 
+  def self.reloadable?
+    false
+  end
+
 end

@@ -8,19 +8,23 @@ class PresencesController < ApplicationController
 
 
   def create
-    tile = @venue.tile
     
-    when_in(tile) {
-      current_user.presences.create(:venue_id => @venue.id)
-      render :text => @venue.to_json, :status => 201 
-    }
+    presence = current_user.presences.create(:venue_id => @venue.id)
+    
+    opt = (presence.new_record? ? {:text => @presence.errors.to_json, :status => 400} : {:text => @venue.to_json, :status => 201 })
+    
+    render opt
+    
   end
 
   def destroy 
-    when_in(@venue) {
-      current_user.current_presence.finish!
-      render :text => @venue.to_json, :status =>  204
-    }
+    
+    presence = current_user.current_presence.destroy
+  
+    opt = presence.errors.blank? ? {:text => @venue.to_json, :status =>  204} : {:text => presence.errors.to_json, :status => 400}
+    
+    render opt
+    
   end
   
   private
