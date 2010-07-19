@@ -46,11 +46,11 @@ class User < ActiveRecord::Base
     current_presence.venue.id == venue_id.to_i
   end
 
-  def in_same_tile?(user_b)
+  def in_same_tile_that?(user_b)
     current_tile == user_b.current_tile
   end
   
-  def in_same_venue?(user_b)
+  def in_same_venue_that?(user_b)
     current_venue == user_b.current_venue
   end
 
