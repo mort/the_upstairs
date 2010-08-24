@@ -6,15 +6,16 @@ class UserRequest < ActiveRecord::Base
     self.send(:named_scope, status, :conditions => "status = #{value}")
   end
   
-  TYPES = %(Handshake Engagement)
+  TYPES = %w(Handshake Engagement)
   
   belongs_to :user
+  belongs_to :requester, :class_name => 'User', :foreign_key => 'requester_id'
   
   after_create :notify_user
 
   def validate
-    errors.add("Not in tile") and return unless user.in_same_tile_that?(requester)
-    errors.add("Not in venue") and return unless user.in_same_venue_that?(requester)  
+    errors.add("Not in same tile") and return unless user.in_same_tile_that?(requester)
+    errors.add("Not in same venue") and return unless user.in_same_venue_that?(requester)  
     errors.add("Unknown request type") and return unless TYPES.include?(type)
     errors.add("Not engaged") and return if requires_engagement?(type) && !user.engaged_with?(requester)
   end

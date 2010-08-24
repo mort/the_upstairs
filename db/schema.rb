@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100719072400) do
+ActiveRecord::Schema.define(:version => 20100823220626) do
 
   create_table "activity_stream_preferences", :force => true do |t|
     t.string   "activity"
@@ -72,15 +72,22 @@ ActiveRecord::Schema.define(:version => 20100719072400) do
   create_table "clusters", :force => true do |t|
     t.integer "tile_id"
     t.string  "cluster_type"
-    t.float   "lat"
-    t.float   "lon"
+    t.decimal "lat",          :precision => 6, :scale => 4
+    t.decimal "lon",          :precision => 6, :scale => 4
+  end
+
+  create_table "collected_vcards", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "vcard_owner_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "engagements", :force => true do |t|
     t.integer  "user_id"
     t.integer  "requester_id"
     t.integer  "request_id"
-    t.integer  "status",       :default => 0, :null => false
+    t.integer  "status"
     t.datetime "finished_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -101,9 +108,6 @@ ActiveRecord::Schema.define(:version => 20100719072400) do
 
   create_table "feed_items", :force => true do |t|
     t.integer  "journey_id"
-    t.integer  "position_id"
-    t.integer  "user_id"
-    t.integer  "presence_id"
     t.string   "title"
     t.string   "feed_item_type"
     t.text     "body"
@@ -112,6 +116,7 @@ ActiveRecord::Schema.define(:version => 20100719072400) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "actions"
+    t.integer  "user_id"
   end
 
   create_table "handshakes", :force => true do |t|
@@ -161,7 +166,6 @@ ActiveRecord::Schema.define(:version => 20100719072400) do
     t.integer  "user_id"
     t.string   "event_type"
     t.text     "body"
-    t.boolean  "actionable"
     t.integer  "status",     :limit => 1, :default => 0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -227,7 +231,7 @@ ActiveRecord::Schema.define(:version => 20100719072400) do
   create_table "user_requests", :force => true do |t|
     t.integer  "user_id"
     t.integer  "requester_id"
-    t.string   "type",         :default => "", :null => false
+    t.string   "request_type", :default => "", :null => false
     t.integer  "status",       :default => 0,  :null => false
     t.datetime "accepted_at"
     t.datetime "declined_at"
@@ -253,6 +257,14 @@ ActiveRecord::Schema.define(:version => 20100719072400) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "activity_stream_token"
+  end
+
+  create_table "vcard_fields", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

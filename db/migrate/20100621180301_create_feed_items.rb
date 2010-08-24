@@ -3,7 +3,6 @@ class CreateFeedItems < ActiveRecord::Migration
     create_table :feed_items do |t|
       t.references :journey
       t.references :position
-      t.references :user
       t.references :presence, :null => true
       t.string :title, :null => true
       t.string :feed_item_type, :null => false, :default => ''
