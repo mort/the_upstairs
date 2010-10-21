@@ -8,8 +8,20 @@ end
 
 Ping.blueprint do
   user  
-  latitude = (rand * 180 - 90).round 4
-  longitude = (rand * 180 - 90).round 4
+  lat { (rand * 180 - 90).round 4 }
+  lon { (rand * 180 - 90).round 4 }
+end
+
+VcardField.blueprint do
+  user
+  name { 'tel' }
+  value { '555-555555'}
+end
+
+Engagement.blueprint do
+  user
+  requester
+  status { Engagement::STATUSES[:active] }
 end
 
 ClientApplication.blueprint do

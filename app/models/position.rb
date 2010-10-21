@@ -16,3 +16,17 @@ class Position < ActiveRecord::Base
   end
 
 end
+
+# == Schema Information
+#
+# Table name: positions
+#
+#  id         :integer(4)      not null, primary key
+#  tile_id    :integer(4)
+#  ping_id    :integer(4)
+#  created_at :datetime
+#  updated_at :datetime
+#  journey_id :integer(4)
+#  expired_at :datetime
+#
+

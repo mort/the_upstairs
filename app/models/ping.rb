@@ -15,3 +15,16 @@ class Ping < ActiveRecord::Base
   end
   
 end
+
+# == Schema Information
+#
+# Table name: pings
+#
+#  id         :integer(4)      not null, primary key
+#  user_id    :integer(4)
+#  lat        :float
+#  lon        :float
+#  created_at :datetime
+#  updated_at :datetime
+#
+

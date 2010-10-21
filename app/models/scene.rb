@@ -34,3 +34,16 @@ class Scene < ActiveRecord::Base
     self.checksum = Digest::MD5.hexdigest(content.to_json)
   end
 end
+
+# == Schema Information
+#
+# Table name: scenes
+#
+#  id         :integer(4)      not null, primary key
+#  tile_id    :integer(4)
+#  content    :text
+#  checksum   :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+

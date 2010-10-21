@@ -31,11 +31,11 @@ class CreateActivityStreams < ActiveRecord::Migration
     end
 
     add_index :activity_streams, [:actor_id, :actor_type],
-      :name => :activity_streams_by_actor
+      :name => 'activity_streams_by_actor'
     add_index :activity_streams, [:object_id, :object_type],
-      :name => :activity_streams_by_object
+      :name => 'activity_streams_by_object'
     add_index :activity_streams, [:indirect_object_id, :indirect_object_type],
-      :name => :activity_streams_by_indirect_object
+      :name => 'activity_streams_by_indirect_object'
 
     create_table :activity_stream_totals do |t|
       t.string :activity
@@ -46,7 +46,7 @@ class CreateActivityStreams < ActiveRecord::Migration
       t.timestamps
     end
     add_index :activity_stream_totals, [:activity, :object_id, 
-      :object_type], :name => :activity_stream_totals_idx
+      :object_type], :name => 'activity_stream_totals_idx'
 
     create_table :activity_stream_preferences do |t|
       t.string :activity
@@ -56,7 +56,7 @@ class CreateActivityStreams < ActiveRecord::Migration
       t.timestamps
     end
     add_index :activity_stream_preferences, [:activity, :user_id],
-      :name => :activity_stream_preferences_idx
+      :name => 'activity_stream_preferences_idx'
 
   end
 

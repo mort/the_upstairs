@@ -60,3 +60,19 @@ class UserRequest < ActiveRecord::Base
   
 
 end
+
+# == Schema Information
+#
+# Table name: user_requests
+#
+#  id           :integer(4)      not null, primary key
+#  user_id      :integer(4)
+#  requester_id :integer(4)
+#  request_type :string(255)     default(""), not null
+#  status       :integer(4)      default(0), not null
+#  accepted_at  :datetime
+#  declined_at  :datetime
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+

@@ -31,3 +31,16 @@ class Presence < ActiveRecord::Base
   end
 
 end
+
+# == Schema Information
+#
+# Table name: presences
+#
+#  id          :integer(4)      not null, primary key
+#  user_id     :integer(4)
+#  venue_id    :integer(4)
+#  finished_at :datetime
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+

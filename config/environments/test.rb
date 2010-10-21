@@ -5,9 +5,6 @@
 # your test database is "scratch space" for the test suite and is wiped
 # and recreated between test runs.  Don't rely on the data there!
 
-config.gem "rspec", :lib => false, :version => ">= 1.2.0"
-config.gem "rspec-rails", :lib => false, :version => ">= 1.2.0"
-#config.gem 'rr'
 
 config.cache_classes = false
 

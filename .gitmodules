@@ -1,3 +1,6 @@
 [submodule "vendor/plugins/activity_streams"]
 	path = vendor/plugins/activity_streams
 	url = git://github.com/face/activity_streams.git
+[submodule "Gigante"]
+	path = vendor/gems/gigante
+	url = git@github.com:mort/Gigante.git

@@ -72,8 +72,8 @@ ActiveRecord::Schema.define(:version => 20100823220626) do
   create_table "clusters", :force => true do |t|
     t.integer "tile_id"
     t.string  "cluster_type"
-    t.decimal "lat",          :precision => 6, :scale => 4
-    t.decimal "lon",          :precision => 6, :scale => 4
+    t.float   "lat"
+    t.float   "lon"
   end
 
   create_table "collected_vcards", :force => true do |t|
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(:version => 20100823220626) do
     t.integer  "user_id"
     t.integer  "requester_id"
     t.integer  "request_id"
-    t.integer  "status"
+    t.integer  "status",       :default => 0, :null => false
     t.datetime "finished_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -108,10 +108,13 @@ ActiveRecord::Schema.define(:version => 20100823220626) do
 
   create_table "feed_items", :force => true do |t|
     t.integer  "journey_id"
+    t.integer  "position_id"
+    t.integer  "presence_id"
     t.string   "title"
-    t.string   "feed_item_type"
-    t.text     "body"
-    t.boolean  "actionable"
+    t.string   "feed_item_type", :default => "",    :null => false
+    t.text     "body",                              :null => false
+    t.string   "scope"
+    t.boolean  "actionable",     :default => false
     t.datetime "read_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -162,15 +165,6 @@ ActiveRecord::Schema.define(:version => 20100823220626) do
 
   add_index "oauth_tokens", ["token"], :name => "index_oauth_tokens_on_token", :unique => true
 
-  create_table "personal_events", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "event_type"
-    t.text     "body"
-    t.integer  "status",     :limit => 1, :default => 0, :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "pings", :force => true do |t|
     t.integer  "user_id"
     t.float    "lat"
@@ -192,13 +186,6 @@ ActiveRecord::Schema.define(:version => 20100823220626) do
     t.integer  "user_id"
     t.integer  "venue_id"
     t.datetime "finished_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "public_messages", :force => true do |t|
-    t.integer  "tile_id"
-    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -14,14 +14,6 @@ class UserRequestsController < ApplicationController
   
   end
 
-  def accept
-    do(:accept!)
-  end
-  
-  def decline
-    do(:decline!)
-  end
-    
   def do(what)
     return false unless [:accept!, :decline!].include(what)
     request = current_user.user_requests.pending.find(params[:id])
@@ -31,5 +23,13 @@ class UserRequestsController < ApplicationController
     render opt
   end
   
-
+  def accept
+    do(:accept!)
+  end
+  
+  def decline
+    do(:decline!)
+  end
+  
+  
 end

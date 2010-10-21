@@ -6,3 +6,15 @@ class Cluster < ActiveRecord::Base
   has_many :venues, :dependent => :nullify
   
 end
+
+# == Schema Information
+#
+# Table name: clusters
+#
+#  id           :integer(4)      not null, primary key
+#  tile_id      :integer(4)
+#  cluster_type :string(255)
+#  lat          :float
+#  lon          :float
+#
+
