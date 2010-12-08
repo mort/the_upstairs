@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100823220626) do
+ActiveRecord::Schema.define(:version => 20101111215039) do
 
   create_table "activity_stream_preferences", :force => true do |t|
     t.string   "activity"

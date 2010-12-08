@@ -5,6 +5,8 @@ class Venue < Feature
 
   validates_uniqueness_of :url
   
+  after_create :build_commchannel
+  
   def current_journeys
     current_presences.map{|p| p.user.ongoing_journey }
   end

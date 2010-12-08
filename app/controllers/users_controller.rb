@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :require_no_user, :only => [:new, :create]
-  before_filter :require_user, :only => [:show, :edit, :update]
+  before_filter :require_user, :only => [:show, :edit, :update, :talk_to]
   
   def new
     @user = User.new
@@ -33,4 +33,9 @@ class UsersController < ApplicationController
       render :action => :edit
     end
   end
+  
+  def talk_to
+    current_user.say(User.find(params[:id], params[:content])
+  end
+  
 end

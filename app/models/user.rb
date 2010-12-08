@@ -19,13 +19,19 @@ class User < ActiveRecord::Base
 
   has_many :collected_vcards
   has_many :granted_vcards, :class_name => 'CollectedVcard', :foreign_key => 'vcard_owner'
+  
+  has_many :talked_words, :class_name => 'Word', :as => :emitter
+  has_many :heard_words, :class_name => 'Word', :as => :receiver
+  
+  has_many :wordspace_participations, :class_name => 'WordsPace'
+  has_many :wordspaces, :through => :wordspace_participations
+  
     
   acts_as_authentic do |c|
     c.require_password_confirmation = false
   end
   
-  include Up::UserExt::Info
-  include Up::UserExt::Vcard
+  include Up::Userlib
   
   def notify(msg, msg_type, options = {})
     journey = ongoing_journey
@@ -45,12 +51,31 @@ class User < ActiveRecord::Base
   def admin?
     true
   end
-  
 
+  def channel_id(emitter)
+    "#{self.class.to_s.downcase}:#{active_engagement_with(emitter).id}"
+  end
+  
+  def join_commchannel(commchannel)
+    Redis.sadd commchannel.members_key, self.id  
+  end
+  
+  def leave_commchannel(commchannel)
+    Redis.srem commchannel.members_key, self.id  
+  end
+  
   private
   
   def require_engagement_with(u)
     raise Exceptions::NotEngaged unless self.engaged_with?(u)
+  end
+  
+  def require_presence_in_venue(v)
+    raise Exceptions::NotInTheVenue unless self.in_venue?(v.id)
+  end
+  
+  def require_presence_in_tile(t)
+    raise Exceptions::NotInTheTile unless self.in_tile?(t.id)
   end
 
 end

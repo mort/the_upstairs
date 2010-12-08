@@ -13,6 +13,11 @@ gem 'oauth'
 gem 'oauth-plugin'
 gem 'ai4r'
 
+gem 'em-websocket'
+
+gem 'redis'
+gem 'system_timer'
+
 gem 'base58'
 gem 'crack'
 gem 'json'

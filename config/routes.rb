@@ -1,18 +1,35 @@
 ActionController::Routing::Routes.draw do |map|
+
+
+
   map.resources :user_requests
 
  
   #map.namespace(:api) do |api| 
+  
     map.resources :pings
+    
+    map.resource :me, :controler => :users do |me|
+      me.resources :words
+      me.resources :vcard_giving
+    end
+  
     map.resources :journeys, :member => {:stats => :get} do |journey|
+      
       journey.resources :tiles, :member => {:look => :get, :feed => :get} do |tile|
         tile.resources :public_messages
       end
+      
       journey.resources :pictures
-      journey.resources :venues do |venue|
+      
+      journey.resources :venues, :member => {:talk_to => :put} do |venue|
         venue.resource :presence
       end
-    
+      
+      journey.resources :travelers, :member => {:talk_to => :put} do |traveler|
+        traveler.resources :user_requests
+      end
+      
       journey.resources :feed_items, :as => 'feed'
     end 
     

@@ -3,6 +3,16 @@ class Engagement < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :requester, :class_name => 'User'
+  
+  has_one :commchannel, :as => :context
+  
+  after_create :set_commchannel
+  
+  named_scope :active, :conditions => { :status => STATUSES[:active] }
+  
+  named_scope :with_user, :lambda => {|user| { :conditions => "user_id = #{user.id} OR requester_id = #{user_id}" }
+   }
+   
 
   def self.proceed(request)
     user = request.user
@@ -11,6 +21,14 @@ class Engagement < ActiveRecord::Base
 
   def finish!
     update_attributes(:status => STATUSES[:finished], :finished_at => Time.now)
+    [user,requester].each {|u| u.leave_commchannel(channel) }
+  end
+  
+  private
+  
+  def create_commchannel
+    commchannel = build_commchannel
+    [user,requester].each {|u| u.join_commchannel(commchannel) }
   end
 
 end

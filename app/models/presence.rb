@@ -7,13 +7,12 @@ class Presence < ActiveRecord::Base
   named_scope :finished, :conditions => 'finished_at IS NOT NULL'
   
   before_create :cancel_prior!
+  after_create :join_commchannel
+  before_destroy :leave_commchannel
   
   def validate
     errors.add_to_base 'Not in tile' unless user.in_tile?(venue.tile.id)
-  end
-  
-  def before_destroy
-    errors.add_to_base 'Not in venue' unless user.in_venue?(venue.id)
+    errors.add_to_base 'Not in venue' unless user.in_venue?(venue)    
   end
   
   def destroy
@@ -21,6 +20,14 @@ class Presence < ActiveRecord::Base
   end
   
   private
+  
+  def join_commchannel
+    user.join_commchannel(venue.commchannel)
+  end
+  
+  def leave_commchannel
+    user.leave_commchannel(venue.commchannel)
+  end
   
   def cancel_prior!
     ActiveRecord::Base.connection.execute("UPDATE presences SET finished_at = '#{Time.now.to_s(:db)}' WHERE user_id = #{user.id} AND finished_at IS NULL")

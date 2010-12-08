@@ -49,4 +49,52 @@ describe User, 'exchanging vcards' do
 
   end
   
+  
+end
+
+
+describe User, 'talking' do
+
+  before(:each) do
+
+    stub.instance_of(User).notify { true }    
+
+    @foo = User.make!
+    @ping = Ping.make!(:user => @foo)
+
+    @bar = User.make!
+    @ping2 = Ping.make!(:user => @bar, :lat => @ping.lat, :lon => @ping.lon)
+
+
+  context 'Not engaged users' do
+
+    it 'should require engagement' do
+      lambda { @foo.say(@bar, 'foo') }.should raise_error(Exceptions::NotEngaged)
+    end
+    
+
+  end  
+
+  context 'Engaged users' do
+
+     before(:each) do
+       Engagement.make!(:user => @foo, :requester => @bar)
+     end
+
+     it 'should transmit talked words' do
+        @foo.say(@bar, 'foo')
+        assert @bar.heard_words.first.content == 'foo'
+     end  
+   
+   
+     it 'dialogues not monologues' do
+       @bar.say(@foo, 'foo')
+       assert @foo.heard_words.first.content == 'foo'
+     end
+ 
+   end
+
+  end
+
+
 end

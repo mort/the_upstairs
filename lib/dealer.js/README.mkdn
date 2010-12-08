@@ -1,0 +1,47 @@
+# Dealer.js
+
+Framework for setting up a cluster of web socket servers.  Each server runs one 
+Dealer instance, which tracks connected clients, and channel subscribers.
+
+Since connections can go to any web socket server, you can use redis to push
+channel messages to all the socket servers.  Each socket server sends them to
+any applicable subscribers, or ignores them.
+
+See the `/example` dir for a server-side and client-side demo using redis.
+
+Demo screencast: http://screenr.com/ctM
+
+## Setup
+
+    // first, we need ncr/node.ws.js for the web socket server stuff
+    $ git clone git://github.com/ncr/node.ws.js.git
+    // symlink ws.js to your node load path
+    $ ln -s /path/to/node.ws.js/ws.js ~/.node_libraries
+
+    // next, clone technoweenie/dealer.js
+    $ git clone git://github.com/technoweenie/dealer.js.git
+    // symlink lib to your node load path
+    $ ln -s /path/to/dealer.js/lib ~/.node_libraries/dealer
+    
+    // now use it!
+    var dealer = require('dealer')
+
+## TODO
+
+* some sort of authentication/authorization for channels
+* Socket.IO?
+* kiwi or other node packaging system
+* sweet frontend that supports web sockets OR flash
+* frontend that attempts to reconnect after failures
+
+## Note on Patches/Pull Requests
+ 
+* Fork the project.
+* Make your feature addition or bug fix.
+* Commit, do not mess with version or history.
+  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
+* Send me a pull request. Bonus points for topic branches.
+
+## Copyright
+
+Copyright (c) 2010 rick. See LICENSE for details.

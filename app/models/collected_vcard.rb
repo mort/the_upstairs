@@ -3,6 +3,11 @@ class CollectedVcard < ActiveRecord::Base
   belongs_to :owner, :class_name => 'User', :foreign_key => 'vcard_owner_id'
   
   validates_uniqueness_of :vcard_owner_id, :scope => :user_id
+  
+  def validate
+    errors.add_to_base('Not engaged') unless user.engaged_with?(owner)
+  end  
+  
 end
 
 # == Schema Information

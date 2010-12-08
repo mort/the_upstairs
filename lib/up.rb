@@ -1,5 +1,5 @@
 module Up
-  module UserExt
+  module Userlib
     module Vcard
             
       def vcard
@@ -12,19 +12,6 @@ module Up
         end
       end
       
-      def give_vcard_to(recipient)
-        require_engagement_with(recipient)
-        recipient.collected_vcards.create(:vcard_owner_id => self.id)
-      end
-
-      def exchange_vcards_with(recipient)
-        require_engagement_with(recipient)
-        User.transaction do 
-          give_vcard_to(recipient)
-          collected_vcards.create(:vcard_owner_id => recipient.id)
-        end
-      end
-
       def add_vcard_field(k,v)
         vcard_fields.create(:name => k, :value => v)
       end
@@ -39,7 +26,7 @@ module Up
       
     end
  
-    module Info
+    module Introspection
       def ongoing_journey
         self.journey ||= self.journeys.create(:status => Journey::STATUSES[:ongoing])
       end
@@ -64,8 +51,8 @@ module Up
         ongoing_journey.id == journey_id.to_i
       end
 
-      def in_venue?(venue_id)
-        current_presence.venue.id == venue_id.to_i
+      def in_venue?(venue)
+        current_presence.venue == venue
       end
 
       def in_same_tile_that?(user_b)
@@ -81,7 +68,31 @@ module Up
         e = Engagement.first(:conditions => ["(user_id IN (?,?) AND requester_id IN (?,?)) AND finished_at IS NULL AND status = ?", self.id, u.id, u.id, self.id, Engagement::STATUSES[:active]], :order => 'created_at DESC')
         !e.nil?
       end
+      
+      def active_engagement_with(user)
+        engagements.active.with_user(user)
+      end
         
     end
+    
+    module Verbs
+  
+      def give_vcard_to(recipient)
+        require_engagement_with(recipient)
+        give = recipient.collected_vcards.create(:vcard_owner_id => self.id)
+        return give.valid? ? true : give.errors     
+      end
+
+      def exchange_vcards_with(recipient)
+        require_engagement_with(recipient)
+        User.transaction do 
+          give_vcard_to(recipient)
+          collected_vcards.create(:vcard_owner_id => recipient.id)
+        end
+      end
+  
+      
+    end
+    
   end
 end
