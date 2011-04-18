@@ -28,7 +28,7 @@
 	if (@tile.pictures.loaded? && @tile.pictures.any?)
 		t[:pictures] = []
 		@tile.pictures.each do |p|
-			t[:pictures] << {:id => p.id, :lon => p.lon, :lat => p.lat, :title => p.title, :url => p.url, :geohash => p.geohash, :link => journey_picture_url(current_user.ongoing_journey, p)}
+			t[:pictures] << @picture.to_geojson
 		end
 	end
 	

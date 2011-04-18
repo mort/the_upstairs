@@ -10,6 +10,11 @@ class Feature < ActiveRecord::Base
     CSquare.new(self.lat,self.lon).code
   end
 
+  def to_json
+    {:id => p.id, :lon => p.lon, :lat => p.lat, :title => p.title, :url => p.url, :geohash => p.geohash, :link => journey_picture_url(current_user.ongoing_journey, p)}
+  end
+  
+
 end
 
 # == Schema Information
